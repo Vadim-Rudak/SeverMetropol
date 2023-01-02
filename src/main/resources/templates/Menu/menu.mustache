@@ -58,6 +58,7 @@
         </div>
     </div>
 </div>
+<input type="checkbox" id="bool_chek_news" {{#boolNews}}checked{{/boolNews}} hidden>
 <div class="navBar2_in">
     <div class="left_btns">
         <a href="/navbar2-1" style="text-decoration: none">
@@ -231,78 +232,26 @@
         </div>
     </div>
     <div class="list_all_news" id="id_list_all_news">
-        <div class="block_one_new shadow">
-            <div class="block_img_in_new">
-                <picture style="text-align:center;object-fit: cover">
-                    <img class="main_image" src="images/ic_item_in_news.jpg" width="270px" height="200px" style="object-fit: cover" >
-                </picture>
+        {{#news}}
+            <div class="block_one_new shadow">
+                <div class="block_img_in_new">
+                    <picture style="text-align:center;object-fit: cover">
+                        {{#newsImg.res}}
+                            <img class="main_image" src="data:image/jpg;base64,{{newsImg.res}}" width="270px" height="200px" style="object-fit: cover" >
+                        {{/newsImg.res}}
+                        {{^newsImg.res}}
+                            <img class="main_image" src="images/default_img_add_news.jpg" width="270px" height="200px" style="object-fit: cover" >
+                        {{/newsImg.res}}
+                    </picture>
+                </div>
+                <div class="block_info_in_new">
+                    <div class="titel_in_new">{{#titel}}{{titel}}{{/titel}}</div>
+                    <div class="info_one_new">{{#more_info}}{{more_info}}{{/more_info}}</div>
+                    {{#href}}<div class="info_one_new">Ссылка на ресурс:<a href="{{href}}" >{{href}}</a></div>{{/href}}
+                    <div class="other_info_new">Дата публикации: {{#date_created}}{{date_created}}{{/date_created}} {{#time_created}}{{time_created}}{{/time_created}} Автор: {{user_created.last_name}} {{#user_created.name}}{{user_created.name}}{{/user_created.name}}</div>
+                </div>
             </div>
-            <div class="block_info_in_new">
-                <div class="titel_in_new">Завтра состоится мероприятие...</div>
-                <div class="info_one_new">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                <div class="other_info_new">Дата публикации: 21.12.2022 13:15 Автор: Иванов Иван</div>
-            </div>
-        </div>
-        <div class="block_one_new shadow">
-            <div class="block_img_in_new">
-                <picture style="text-align:center;object-fit: cover">
-                    <img class="main_image" src="images/ic_item_in_news.jpg" width="270px" height="200px" style="object-fit: cover" >
-                </picture>
-            </div>
-            <div class="block_info_in_new">
-                <div class="titel_in_new">Завтра состоится мероприятие...</div>
-                <div class="info_one_new">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                <div class="other_info_new">Дата публикации: 21.12.2022 13:15 Автор: Иванов Иван</div>
-            </div>
-        </div>
-        <div class="block_one_new shadow">
-            <div class="block_img_in_new">
-                <picture style="text-align:center;object-fit: cover">
-                    <img class="main_image" src="images/ic_item_in_news.jpg" width="270px" height="200px" style="object-fit: cover" >
-                </picture>
-            </div>
-            <div class="block_info_in_new">
-                <div class="titel_in_new">Завтра состоится мероприятие...</div>
-                <div class="info_one_new">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                <div class="other_info_new">Дата публикации: 21.12.2022 13:15 Автор: Иванов Иван</div>
-            </div>
-        </div>
-        <div class="block_one_new shadow">
-            <div class="block_img_in_new">
-                <picture style="text-align:center;object-fit: cover">
-                    <img class="main_image" src="images/ic_item_in_news.jpg" width="270px" height="200px" style="object-fit: cover" >
-                </picture>
-            </div>
-            <div class="block_info_in_new">
-                <div class="titel_in_new">Завтра состоится мероприятие...</div>
-                <div class="info_one_new">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                <div class="other_info_new">Дата публикации: 21.12.2022 13:15 Автор: Иванов Иван</div>
-            </div>
-        </div>
-        <div class="block_one_new shadow">
-            <div class="block_img_in_new">
-                <picture style="text-align:center;object-fit: cover">
-                    <img class="main_image" src="images/ic_item_in_news.jpg" width="270px" height="200px" style="object-fit: cover" >
-                </picture>
-            </div>
-            <div class="block_info_in_new">
-                <div class="titel_in_new">Завтра состоится мероприятие...</div>
-                <div class="info_one_new">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                <div class="other_info_new">Дата публикации: 21.12.2022 13:15 Автор: Иванов Иван</div>
-            </div>
-        </div>
-        <div class="block_one_new shadow">
-            <div class="block_img_in_new">
-                <picture style="text-align:center;object-fit: cover">
-                    <img class="main_image" src="images/ic_item_in_news.jpg" width="270px" height="200px" style="object-fit: cover" >
-                </picture>
-            </div>
-            <div class="block_info_in_new">
-                <div class="titel_in_new">Завтра состоится мероприятие...</div>
-                <div class="info_one_new">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                <div class="other_info_new">Дата публикации: 21.12.2022 13:15 Автор: Иванов Иван</div>
-            </div>
-        </div>
+        {{/news}}
     </div>
 
 </div>
@@ -317,7 +266,7 @@
                 </div>
             </div>
             <div class="inputs_info_in_new">
-                <div name="id_user_created" hidden>{{AuthUser.id}}</div>
+                <input name="id_user_created" value="{{AuthUser.id}}" hidden>
                 <div class="block_img_and_titel" >
                     <div class="block_photo">
                         <a href="javascript:clearPhoto()" style="display: none; margin-top: 3px; margin-right: 3px; width: 15px;height: 15px;position: absolute;top: 0;right: 0" id="btn_clear_photo">

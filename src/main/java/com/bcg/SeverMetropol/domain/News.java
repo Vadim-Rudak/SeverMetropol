@@ -18,6 +18,6 @@ public class News {
     private String href;
     private String titel;
     private String more_info;
-
-
+    private NewsImg newsImg;
+    private User user_created;
 }

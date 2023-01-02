@@ -56,9 +56,7 @@
         <div class="tool_user_info">
             <div class="user_name" id="user_name">{{AuthUser.name}} {{AuthUser.last_name}}</div>
             <div class="org">{{role}}</div>
-            <div class="project_id" id="project_id" hidden>0</div>
-            <div class="shop_id" id="shop_id" hidden>0</div>
-            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+            <div id="user_id" hidden>{{AuthUser.id}}</div>
         </div>
         <div class="tool_btn_log_out">
             <a rel="nofollow" data-method="post" href="/logout">

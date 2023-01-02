@@ -14,6 +14,7 @@
     <link type="text/css" href="css/pages/TopPageGraf2.css" rel="stylesheet"/>
 
     <script src="scripts/TopMenu/TopMenu.js"></script>
+    <script src="scripts/TopMenu/news/scriptNews.js"></script>
 
 </head>
 <body>
@@ -48,9 +49,7 @@
         <div class="tool_user_info">
             <div class="user_name" id="user_name">{{#AuthUser.last_name}}{{AuthUser.last_name}}{{/AuthUser.last_name}} {{#AuthUser.name}}{{AuthUser.name}}{{/AuthUser.name}}</div>
             <div class="org">{{role}}</div>
-            <div class="project_id" id="project_id" hidden>0</div>
-            <div class="shop_id" id="shop_id" hidden>0</div>
-            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+            <div id="user_id" hidden>{{AuthUser.id}}</div>
         </div>
         <div class="tool_btn_log_out">
             <a rel="nofollow" data-method="post" href="/logout">
@@ -310,7 +309,7 @@
 
 <div class="b-popup" id="popUpAddNews">
     <div class="b-popup-content">
-        <form>
+        <form method="post" enctype="multipart/form-data" action="/addNews" >
             <div class="titel_block">
                 <div class="text_titel_hist">Добавление новости</div>
                 <div class="block_cl">
@@ -318,15 +317,32 @@
                 </div>
             </div>
             <div class="inputs_info_in_new">
-                <div class="text_up_input">Заголовок новости</div>
-                <div class="input2">
-                    <input class="input_fio" id="name_task" placeholder="Заголовок новости">
+                <div name="id_user_created" hidden>{{AuthUser.id}}</div>
+                <div class="block_img_and_titel" >
+                    <div class="block_photo">
+                        <a href="javascript:clearPhoto()" style="display: none; margin-top: 3px; margin-right: 3px; width: 15px;height: 15px;position: absolute;top: 0;right: 0" id="btn_clear_photo">
+                            <img src="images/close.png" width="15px" height="15px"/>
+                        </a>
+                        <label for="custom-file-upload" class="append">
+                            <img src="images/default_img_add_news.jpg" width="220px" height="124px" id="img_news" style="object-fit: cover"/>
+                            <input type="file" name="file_img" id="custom-file-upload"/>
+                        </label>
+                    </div>
+                    <div class="block_inp_add_news">
+                        <div class="text_up_input">Заголовок новости</div>
+                        <div class="input2">
+                            <input class="input_fio" name="titel" placeholder="Введите заголовок">
+                        </div>
+                        <div class="text_up_input">Ссылка на новость</div>
+                        <div class="input2">
+                            <input class="input_fio" name="href" placeholder="Введите ссылку">
+                        </div>
+                    </div>
                 </div>
                 <div class="text_up_input">Подробная информация</div>
                 <div class="input2">
-                    <textarea class="input_messqge input_info3" id="description_input" placeholder="Подробная информация"></textarea>
+                    <textarea class="input_messqge input_info3" name="more_info" placeholder="Введите подробную информацию"></textarea>
                 </div>
-                <input type="file" name="file_input_in_new_task" class="btn_add_photo" id="input_file">
                 <div class="block_for_btn">
                     <button class="btn_save_news" type="submit">Добавить</button>
                 </div>

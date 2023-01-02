@@ -56,6 +56,16 @@ public class AppConfig {
         return new MoreUserInfoImpl(getJdbcTemplate());
     }
 
+    @Bean
+    public NewsRepo getNewsDao(){
+        return new NewsImpl(getJdbcTemplate());
+    }
+
+    @Bean
+    public NewsImgRepo getNewsImgDao(){
+        return new NewsImgImpl(getJdbcTemplate());
+    }
+
 //
 //    @Bean
 //    public TaskRepo getTaskDao(){

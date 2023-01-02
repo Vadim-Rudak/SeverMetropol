@@ -31,6 +31,7 @@ public class PhotoImpl implements PhotoRepo{
 
     @Override
     public int findLastPhotoId() {
+        //add when null
         String sql = "SELECT MAX(id) FROM user_photo";
         return jdbcTemplate.queryForObject(sql,Integer.class);
     }

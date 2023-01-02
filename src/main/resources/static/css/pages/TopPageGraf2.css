@@ -14,10 +14,10 @@ path {
   /* stroke-width: 5px; */
   cursor: pointer;
   transition: fill 250ms;
-  &:hover {
-    /* stroke-width: 10px; */
-    fill: rgba(76, 125, 175, 0.56);
-  }
+  /*&:hover {*/
+  /*  !* stroke-width: 10px; *!*/
+  /*  fill: rgba(76, 125, 175, 0.56);*/
+  /*}*/
 }
 
 text {
@@ -46,12 +46,12 @@ button {
   border: 1px solid rgba(76, 125, 175, 0.56);
   letter-spacing: 1px;
   transition: all 250ms;
-  &:hover {
-    background-color: rgba(76, 125, 175, 0.56);
-    color: #ffffff;
-    box-shadow: 0 0 2px rgba(76, 125, 175, 0.56);
-  }
-  &:active {
-    opacity: 0.5;
-  }
+  /*&:hover {*/
+  /*  background-color: rgba(76, 125, 175, 0.56);*/
+  /*  color: #ffffff;*/
+  /*  box-shadow: 0 0 2px rgba(76, 125, 175, 0.56);*/
+  /*}*/
+  /*&:active {*/
+  /*  opacity: 0.5;*/
+  /*}*/
 }

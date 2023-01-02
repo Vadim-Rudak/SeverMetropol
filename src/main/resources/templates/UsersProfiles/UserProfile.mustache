@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" href="css/navBar/bodyAndFonts.css" rel="stylesheet"/>
+    <link type="text/css" href="css/navBar/navBarAllPage.css" rel="stylesheet"/>
+
+    <link type="text/css" href="css/pages/UserProfile.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/pages/style_for_calendar.css">
+
+    <script src="scripts/users/oneUser/popUp.js"></script>
+
+<!--    Для списка лет-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="scripts/calendar_in_user_profile/jquery.min.js"></script>
+    <script src="scripts/calendar_in_user_profile/popper.js"></script>
+    <script src="scripts/calendar_in_user_profile/bootstrap.min.js"></script>
+    <script src="scripts/calendar_in_user_profile/main.js"></script>
+
+
+</head>
+<body>
+
+<div class="toolbar_menu shadow">
+    <div class="tool_left">
+        <a href="/" class="block_two_logo">
+            <div class="tool_logo1">
+                <img src="images/toolbar/logo1.svg" width="100%" />
+            </div>
+            <div class="tool_logo2">
+                <img src="images/toolbar/logo2.svg" width="100%" />
+            </div>
+        </a>
+        <div class="tool_titel">
+            {{#tabs}}
+                <a href="{{href}}" class="cl_btn_in_navBar"><div class="btn_in_navBar">{{name}}</div></a>
+            {{/tabs}}
+        </div>
+    </div>
+    <div class="tool_right">
+        <div class="tool_img">
+            {{#use_img}}
+                <img src="data:image/jpg;base64,{{user_photo}}" class="small_user_photo" />
+            {{/use_img}}
+            {{#use_default_img}}
+                <div class = "user_img_bg">
+                    <div class="char_in_img" id="char_in_img">{{first_char}}</div>
+                </div>
+            {{/use_default_img}}
+        </div>
+        <div class="tool_user_info">
+            <div class="user_name" id="user_name">{{AuthUser.name}} {{AuthUser.last_name}}</div>
+            <div class="org">{{role}}</div>
+            <div class="project_id" id="project_id" hidden>0</div>
+            <div class="shop_id" id="shop_id" hidden>0</div>
+            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+        </div>
+        <div class="tool_btn_log_out">
+            <a rel="nofollow" data-method="post" href="/logout">
+                <img src="images/toolbar/img_btn_sign_out.svg" width="100%" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="all_blocks">
+    <div class="bg_one_user_page">
+        <div class="block_user_info1">
+            <div class="block_user_img_btn">
+                <div class="block_img">
+                    {{#seeUser.photo.res}}
+                        <img src="data:image/jpg;base64,{{seeUser.photo.res}}" width="256px" height="256px" style="object-fit: cover" />
+                    {{/seeUser.photo.res}}
+                    {{^seeUser.photo.res}}
+                        <img src="images/user_photo.jpg" width="256px" height="256px" />
+                    {{/seeUser.photo.res}}
+                </div>
+                <div class="btns_in_block1">
+                    <a href="/listAllUsers" style="text-decoration: none">
+                        <div class="btn_type_1">
+                            <div class="text_type_1">Вернуться к списку пользователей</div>
+                        </div>
+                    </a>
+                    <a href="/EditUserProfile?id={{seeUser.id}}" style="text-decoration: none">
+                        <div class="btn_type_1">
+                            <div class="text_type_1">Редактировать информацию</div>
+                        </div>
+                    </a>
+                    <a href="javascript:PopUpShowDeleteUser({{seeUser.id}})" style="text-decoration: none">
+                        <div class="btn_type_2">
+                            <div class="text_type_2">Удалить пользователя</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="block_info">
+                <div class="user_fio">{{#seeUser.last_name}}{{seeUser.last_name}}{{/seeUser.last_name}} {{#seeUser.name}}{{seeUser.name}}{{/seeUser.name}} {{#seeUser.patronymic}}{{seeUser.patronymic}}{{/seeUser.patronymic}}</div>
+                <div class="info_1">Дата рождения: {{#seeUser.moreUserInfo.birthday}}{{seeUser.moreUserInfo.birthday}}{{/seeUser.moreUserInfo.birthday}}</div>
+                <div class="info_1">Должность: {{#seeUser.role}}{{seeUser.role}}{{/seeUser.role}}</div>
+                <div class="info_1">Логин: {{#seeUser.login}}{{seeUser.login}}{{/seeUser.login}} </div>
+                <div class="info_1">Пароль: {{#seeUser.password}}{{seeUser.password}}{{/seeUser.password}} </div>
+                <div class="info_1">Телефон: {{#seeUser.moreUserInfo.phone}}{{seeUser.moreUserInfo.phone}}{{/seeUser.moreUserInfo.phone}}</div>
+                <div class="info_1">Характеристика:<br>
+                    {{#seeUser.moreUserInfo.all_info}}{{seeUser.moreUserInfo.all_info}}{{/seeUser.moreUserInfo.all_info}}</div>
+            </div>
+        </div>
+        <div class="block_user_info2">
+            <div class="block_date_info">
+
+                <div class="col-md-12">
+                    <div class="titel_block3">Активность пользователя за ПК</div>
+                    <div class="content w-100">
+                        <div class="calendar-container">
+                            <div class="calendar">
+                                <div class="year-header">
+                                    <span class="left-button fa fa-chevron-left" id="prev"> </span>
+                                    <span class="year" id="label"></span>
+                                    <span class="right-button fa fa-chevron-right" id="next"> </span>
+                                </div>
+                                <table class="months-table w-100">
+                                    <tbody>
+                                    <tr class="months-row">
+                                        <td class="month">ЯНВ</td>
+                                        <td class="month">ФЕВ</td>
+                                        <td class="month">МАР</td>
+                                        <td class="month">АПР</td>
+                                        <td class="month">МАЙ</td>
+                                        <td class="month">ИЮНЬ</td>
+                                        <td class="month">ИЮЛЬ</td>
+                                        <td class="month">АВГ</td>
+                                        <td class="month">СЕН</td>
+                                        <td class="month">ОКТ</td>
+                                        <td class="month">НОЯ</td>
+                                        <td class="month">ДЕК</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="days-table w-100">
+                                    <td class="day">ВС</td>
+                                    <td class="day">ПН</td>
+                                    <td class="day">ВТ</td>
+                                    <td class="day">СР</td>
+                                    <td class="day">ЧТ</td>
+                                    <td class="day">ПТ</td>
+                                    <td class="day">СУ</td>
+                                </table>
+                                <div class="frame">
+                                    <table class="dates-table w-100">
+                                        <tbody class="tbody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--                        <button class="button" id="add-button">Add Event</button>-->
+                            </div>
+                        </div>
+                        <div class="events-container">
+                        </div>
+                        <div class="dialog" id="dialog">
+                            <h2 class="dialog-header"> Add New Event </h2>
+                            <form class="form" id="form">
+                                <div class="form-container" align="center">
+                                    <label class="form-label" id="valueFromMyButton" for="name">Event name</label>
+                                    <input class="input" type="text" id="name" maxlength="36">
+                                    <label class="form-label" id="valueFromMyButton" for="count">Number of people to invite</label>
+                                    <input class="input" type="number" id="count" min="0" max="1000000" maxlength="7">
+                                    <input type="button" value="Cancel" class="button" id="cancel-button">
+                                    <input type="button" value="OK" class="button button-white" id="ok-button">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="b-popup-del-user" id="popUpDeleteUser">
+    <div class="b-popup-content">
+        <form>
+            <div class="text_delete_user_in_pop_up" >Вы действительно хотите удалить сотрудника с web-портала?</div>
+
+            <div class="btn_in_pop_up_delete_user">
+                <a href="#" style="text-decoration: none" id="btn_delete_in_popUp">
+                    <div class="btn_del_user">
+                        <div class="text_btn_delete_usr">Удалить</div>
+                    </div>
+                </a>
+                <a href="javascript:PopUpHideDeleteUser()" style="text-decoration: none">
+                    <div class="btn_cansel_del_user">
+                        <div class="text_btn_cansel_delete">Отмена</div>
+                    </div>
+                </a>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+</body>
+</html>

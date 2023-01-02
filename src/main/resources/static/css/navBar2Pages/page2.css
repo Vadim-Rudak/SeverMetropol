@@ -1,0 +1,204 @@
+
+.shadow{
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
+}
+
+.block_up_dir{
+    width: 100%;
+    height: 20px;
+}
+
+.all_top_dir{
+    height: calc(100vh - 158px);
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 98%;
+    display: flex;
+}
+
+.one_top_dir{
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 280px;
+    height: fit-content;
+}
+
+.block_titel{
+    margin-bottom: 4px;
+    height: 30px;
+    width: 100%;
+    background-color: rgba(93, 110, 228, 0.07);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text_top_dir_name{
+    /* Body 14\20 */
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    letter-spacing: 0.01em;
+    color: #5d6ee4;
+}
+
+.dir_in_top_dir{
+    margin-top: 4px;
+    height: 30px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.02);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.settings_in_small_dir{
+    position: absolute;
+    right: 30px;
+}
+
+.delete_small_dir{
+    position: absolute;
+    right: 5px;
+}
+
+.name_dir_in_top_dir{
+    /* Body 14\20 */
+    padding-left: 20px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    letter-spacing: 0.01em;
+    color: #5d6ee4;
+}
+
+
+
+
+
+
+
+/* See Dir */
+.see_files_in_small_dir{
+    display: none;
+    width: 100%;
+    height: calc(100vh - 158px);
+}
+
+
+.toolBar_in_small_dir{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left_block_in_toolbar{
+    display: flex;
+}
+
+.name_open_dir{
+    /* Body 14\20 */
+    padding-left: 10px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    letter-spacing: 0.01em;
+    color: #5d6ee4;
+}
+
+
+.btns_to_add_fold{
+    display: flex;
+}
+
+.btn_add_in_small_dir{
+    margin-right: 20px;
+    height: fit-content;
+    width: 150px;
+    background-color: #5d6ee4;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text_in_btn_add{
+    /* Body 14\20 */
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    letter-spacing: 0.01em;
+    color: white;
+}
+
+
+
+
+
+
+.block_all_files_in_dir{
+    margin-top: 20px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.one_file{
+    height: 180px;
+    width: 190px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.img_to_one_file{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name_file{
+    display: flex;
+    justify-content: center;
+}
+
+.text_name_file{
+    /* Body 14\20 */
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    letter-spacing: 0.01em;
+    color: #272727;
+}

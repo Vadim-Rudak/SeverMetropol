@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
+
+    <link type="text/css" href="css/navBar/bodyAndFonts.css" rel="stylesheet"/>
+    <link type="text/css" href="css/navBar/navBarAllPage.css" rel="stylesheet"/>
+
+    <link type="text/css" href="css/navBar2Pages/navbar2.css" rel="stylesheet"/>
+    <link type="text/css" href="css/navBar2Pages/page4.css" rel="stylesheet"/>
+
+    <script src="scripts/navBar2/page4/popUp.js"></script>
+
+
+<!--    ADD FUL CALENDAR-->
+    <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+
+<!--    <link rel="stylesheet" href="css/calendar_with_tasks/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="css/calendar_with_tasks/style.css">-->
+
+</head>
+<body>
+
+<div class="toolbar_menu shadow">
+    <div class="tool_left">
+        <a href="/" class="block_two_logo">
+            <div class="tool_logo1">
+                <img src="images/toolbar/logo1.svg" width="100%" />
+            </div>
+            <div class="tool_logo2">
+                <img src="images/toolbar/logo2.svg" width="100%" />
+            </div>
+        </a>
+        <div class="tool_titel">
+            {{#tabs}}
+                <a href="{{href}}" class="cl_btn_in_navBar"><div class="btn_in_navBar">{{name}}</div></a>
+            {{/tabs}}
+        </div>
+    </div>
+    <div class="tool_right">
+        <div class="tool_img">
+            {{#use_img}}
+                <img src="data:image/jpg;base64,{{user_photo}}" class="small_user_photo" />
+            {{/use_img}}
+            {{#use_default_img}}
+                <div class = "user_img_bg">
+                    <div class="char_in_img" id="char_in_img">{{first_char}}</div>
+                </div>
+            {{/use_default_img}}
+        </div>
+        <div class="tool_user_info">
+            <div class="user_name" id="user_name">{{AuthUser.name}} {{AuthUser.last_name}}</div>
+            <div class="org">{{role}}</div>
+            <div class="project_id" id="project_id" hidden>0</div>
+            <div class="shop_id" id="shop_id" hidden>0</div>
+            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+        </div>
+        <div class="tool_btn_log_out">
+            <a rel="nofollow" data-method="post" href="/logout">
+                <img src="images/toolbar/img_btn_sign_out.svg" width="100%" />
+            </a>
+        </div>
+    </div>
+</div>
+<div class="navBar2_in">
+    <div class="left_btns">
+        <a href="/navbar2-1" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">КОНДИТЕРСКОЕ<br>ПРОИЗВОДСТВО</div>
+            </div>
+        </a>
+        <a href="/navbar2-2" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">ИНФОРМАЦИОННЫЙ ЦЕНТР</div>
+            </div>
+        </a>
+        <a href="/navbar2-3" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">МОИ ЗАДАЧИ</div>
+            </div>
+        </a>
+        <a href="/navbar2-4" style="text-decoration: none">
+            <div class="btn_in_navBar2_ok">
+                <div class="text_in_navbar2_ok">МОИ ЗАЯВКИ</div>
+            </div>
+        </a>
+    </div>
+    <div class="right_btns">
+        <a href="javascript:useCalendar()">
+            <div class="btn_calendar_and_list" id="id_btn_or_in_tasks">
+                <img src="images/ic_calendar.svg" class="btn_with_calendar" id="id_img_calendar" style="display: block" width="20px" />
+                <img src="images/ic_list.svg" class="btn_with_list" id="id_img_list" width="20px" />
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<div class="task_for_me">
+
+    <div class="task_for_me_filters">
+        <div class="forms_to_add_task">
+            <div class="forms_block_titel">
+                <div class="text_titel_in_forms">ФОРМЫ ДЛЯ ЗАЯВОК</div>
+            </div>
+            <div class="btns_new_task">
+                <a href="javascript:addItTask()" style="text-decoration: none">
+                    <div class="btn_add_new_task">
+                        <div class="text_in_btn_add_task">IT-отдел</div>
+                    </div>
+                </a>
+                <a href="#" style="text-decoration: none">
+                    <div class="btn_add_new_task">
+                        <div class="text_in_btn_add_task">Ремонтная служба</div>
+                    </div>
+                </a>
+                <a href="#" style="text-decoration: none">
+                    <div class="btn_add_new_task">
+                        <div class="text_in_btn_add_task">Закупка канцелярии</div>
+                    </div>
+                </a>
+                <a href="#" style="text-decoration: none">
+                    <div class="btn_add_new_task">
+                        <div class="text_in_btn_add_task">Заказ продукции</div>
+                    </div>
+                </a>
+                <a href="#" style="text-decoration: none">
+                    <div class="btn_add_new_task">
+                        <div class="text_in_btn_add_task">Заказ корп. транспорта</div>
+                    </div>
+                </a>
+            </div>
+            <a href="#" style="text-decoration: none">
+                <div class="btn_add_new_form_to_task">
+                    <div class="text_in_btn_add_form_to_task">Добавить форму для заявок</div>
+                </div>
+            </a>
+        </div>
+        <div class="input-group-search_page4" id="id_search" style="margin-right: 15px">
+            <input type="text" class="input_search" placeholder="Поиск">
+            <div class="input-group-append"><button class="btn btn-primary" style=" display:flex; text-align: center; align-items: center; cursor: pointer">
+                <img src="images/ic_search.svg" width="18px" />
+            </button></div>
+        </div>
+        <div id="id_filters">
+            <div class="titel_in_filters">
+                <div>
+                    <img src="images/filter.png" width="18px" />
+                </div>
+                <div class="text_titel_in_filters">Фильтр</div>
+            </div>
+
+            <div class="line_in_filter"></div>
+
+
+            <!--        Статусы задач:-->
+            <div>
+                <div>
+                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
+                    <label for="scales" class="text_checkbox">Текущие</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="horns" name="horns" class="check_box">
+                    <label for="horns" class="text_checkbox">Срочные</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                    <label for="scales" class="text_checkbox">Просроченные</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="horns" name="horns" class="check_box">
+                    <label for="horns" class="text_checkbox">Связанные</label>
+                </div>
+            </div>
+
+            <div class="btns_in_filter">
+                <a href="#" style="text-decoration: none">
+                    <div class="btn_filter_type_1">
+                        <div class="text_filter_type_1">Применить</div>
+                    </div>
+                </a>
+                <a href="#" style="text-decoration: none">
+                    <div class="btn_filter_type_2">
+                        <div class="text_filter_type_2">Очистить</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="list_my_tasks_sort" id="list_my_all_tasks">
+
+        <div class="titel_in_my_tasks">
+            <div class="text_titel_my_task">Отправленные заявки</div>
+            <div style="display: flex">
+                <a href="#" style="text-decoration: none">
+                    <div class="btn_copy_tasks">
+                        <div class="text_btn_copy_tasks">Сделать резервную копию</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <table class="table_my_task" id="id_table_my_task">
+            <tr class="table_Th">
+                <th class="column1">Номер</th>
+                <th class="column2">Название</th>
+                <th class="column3">Статус</th>
+                <th class="column4">Дата добавление</th>
+                <th class="column5">Прикреплённый файл</th>
+                <th class="column6"></th>
+                <th class="column7">Исполнитель</th>
+                <th class="column8">Ревизор</th>
+                <th class="column9">Главный бухгалтер</th>
+                <th class="column10">Юрист</th>
+                <th class="column11">Директор</th>
+                <th class="column12">История</th>
+            </tr>
+            <tr class="row_with_info">
+                <td class="column1">15</td>
+                <td class="column2">Текст заявки</td>
+                <td class="column3">Новая</td>
+                <td class="column4">01.01.1970</td>
+                <td class="column5">документ.pdf</td>
+                <td class="column6"> </td>
+                <td class="column7">
+                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
+                </td>
+                <td class="column8">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column9">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column10">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column11">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column12">
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="row_with_info">
+                <td class="column1">15</td>
+                <td class="column2">Текст заявки</td>
+                <td class="column3">Новая</td>
+                <td class="column4">01.01.1970</td>
+                <td class="column5">документ.pdf</td>
+                <td class="column6"> </td>
+                <td class="column7">
+                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
+                </td>
+                <td class="column8">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column9">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column10">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column11">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column12">
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="row_with_info">
+                <td class="column1">15</td>
+                <td class="column2">Текст заявки</td>
+                <td class="column3">Новая</td>
+                <td class="column4">01.01.1970</td>
+                <td class="column5">документ.pdf</td>
+                <td class="column6"> </td>
+                <td class="column7">
+                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
+                </td>
+                <td class="column8">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column9">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column10">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column11">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column12">
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr class="row_with_info">
+                <td class="column1">15</td>
+                <td class="column2">Текст заявки</td>
+                <td class="column3">Новая</td>
+                <td class="column4">01.01.1970</td>
+                <td class="column5">документ.pdf</td>
+                <td class="column6"> </td>
+                <td class="column7">
+                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
+                </td>
+                <td class="column8">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column9">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column10">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column11">
+                    <input type="checkbox" id="scales" name="scales" class="check_box">
+                </td>
+                <td class="column12">
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="add_new_task" id="add_new_task">
+        <div class="form_new_task">
+            <div class="titel_new_task">Новая заявка</div>
+            <div>
+                <div class="text_up_input">Название</div>
+                <div class="input2">
+                    <input class="input_titel" id="name_task" placeholder="Введите название">
+                </div>
+            </div>
+            <div class="text_up_input">Описание</div>
+            <div class="input2">
+                <textarea class="input_messqge input_info_problem" id="description_input" placeholder="Опишите проблему"></textarea>
+            </div>
+            <div class="btn_add_file_to_task">
+                <div class="text_in_btn_add_file">Прикрепить файл</div>
+            </div>
+        </div>
+        <div class="from_add_small_task">
+            <div style="display: flex;justify-content: space-between;align-items: center">
+                <div class="titel_new_small_task">Список подзадач</div>
+                <div>
+                    <a href="javascript:PopUpShowAddSmallTask()" style="text-decoration: none">
+                        <img src="images/add-plus.svg" width="20px" />
+                    </a>
+                </div>
+            </div>
+            <div class="list_all_small_tasks">
+                <div>
+                    <img src="images/ic_no_small_task.svg" width="200px" />
+                    <div class="text_no_small_tasks">Список подзадач пуст</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="btn_save_and_cansel">
+            <a href="#" style="text-decoration: none; margin-right: 20px" >
+                <div class="btn_add_task">
+                    <div class="text_filter_type_1">Сохранить</div>
+                </div>
+            </a>
+            <a href="/navbar2-4" style="text-decoration: none">
+                <div class="btn_cansel">
+                    <div class="text_filter_type_2">Отмена</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="big_calendar" id="id_full_calendar">
+        <div class="box_for_calendar" id='calendar-container'>
+            <div id='calendar'></div>
+        </div>
+
+
+
+        <script src="scripts/big_calendar/jquery-3.3.1.min.js"></script>
+        <script src="scripts/big_calendar/popper.min.js"></script>
+        <script src="scripts/big_calendar/bootstrap.min.js"></script>
+
+        <script src='fullcalendar/packages/core/main.js'></script>
+        <script src='fullcalendar/packages/interaction/main.js'></script>
+        <script src='fullcalendar/packages/daygrid/main.js'></script>
+        <script src='fullcalendar/packages/timegrid/main.js'></script>
+        <script src='fullcalendar/packages/list/main.js'></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+                    height: 'parent',
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    defaultView: 'dayGridMonth',
+                    defaultDate: '2022-12-26',
+                    navLinks: true, // can click day/week names to navigate views
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: [
+                        {
+                            title: 'Заявка 1',
+                            start: '2022-12-01',
+                            end: '2022-12-05'
+                        },
+                        {
+                            title: 'Заявка 2',
+                            start: '2022-12-07',
+                            end: '2022-12-10'
+                        },
+                        {
+                            groupId: 999,
+                            title: 'Заявка 3',
+                            start: '2022-12-09T16:00:00'
+                        },
+                        {
+                            groupId: 999,
+                            title: 'Заявка 3',
+                            start: '2022-12-16T16:00:00'
+                        },
+                        {
+                            title: 'Заявка 4',
+                            start: '2022-12-11',
+                            end: '2022-12-13'
+                        },
+                        {
+                            title: 'Заявка 5',
+                            start: '2022-12-12T10:30:00',
+                            end: '2022-12-12T12:30:00'
+                        },
+                        {
+                            title: 'Заявка 6',
+                            start: '2022-12-12T12:00:00'
+                        },
+                        {
+                            title: 'Заявка 7',
+                            start: '2022-12-12T14:30:00'
+                        },
+                        {
+                            title: 'Заявка 8',
+                            start: '2022-12-12T17:30:00'
+                        },
+                        {
+                            title: 'Заявка 9',
+                            start: '2022-12-12T20:00:00'
+                        },
+                        {
+                            title: 'Заявка 10',
+                            start: '2022-12-13T07:00:00'
+                        },
+                        {
+                            title: 'Заявка 11',
+                            url: 'http://google.com/',
+                            start: '2022-12-28'
+                        }
+                    ]
+                });
+
+                calendar.render();
+            });
+
+        </script>
+
+        <script src="scripts/big_calendar/main.js"></script>
+    </div>
+
+</div>
+
+
+<div class="b-popup" id="popUpHistory">
+    <div class="b-popup-content">
+        <div class="titel_block">
+            <div class="text_titel_hist">История</div>
+            <div class="block_cl">
+                <a href="javascript:PopUpHideHistory()" style="text-decoration: none"><img src="images/ic_cl_btn.svg" width="20px" height="20px" /></a>
+            </div>
+        </div>
+        <div class="block_history_info">
+            <div class="text_hist">20.12.2022 10:45 >> Заявка добавлена</div>
+            <div class="text_hist">20.12.2022 15:32 >> Заявка подписана юристом</div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="b-popup_small_task" id="popUpAddSmallTask">
+    <div class="b-popup-content_small_task">
+        <div class="titel_block">
+            <div class="text_titel_hist">Добавление подзадачи</div>
+            <div class="block_cl">
+                <a href="javascript:PopUpHideAddSmallTask()" style="text-decoration: none"><img src="images/ic_cl_btn.svg" width="20px" height="20px" /></a>
+            </div>
+        </div>
+        <div style="margin-left: 20px;margin-right: 20px">
+            <div class="text_up_input">Название</div>
+            <div class="input2">
+                <input class="input_titel" id="name_task" placeholder="Введите название">
+            </div>
+            <div class="text_up_input">Описание</div>
+            <div class="input2">
+                <textarea class="input_messqge input_info_problem_small_task" id="description_input" placeholder="Опишите проблему"></textarea>
+            </div>
+        </div>
+        <div class="block_with_btn_add_new_small_task">
+            <a href="#" style="text-decoration: none">
+                <div class="btn_add_small_task">
+                    <div class="text_filter_type_1">Добавить</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

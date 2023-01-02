@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" href="css/navBar/bodyAndFonts.css" rel="stylesheet"/>
+    <link type="text/css" href="css/navBar/navBarAllPage.css" rel="stylesheet"/>
+
+    <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
+    <script src="scripts/users/oneUser/editUserProfile.js"></script>
+
+    <link type="text/css" href="css/pages/user/editUserPage.css" rel="stylesheet"/>
+
+
+
+
+</head>
+<body>
+
+<div class="toolbar_menu shadow">
+    <div class="tool_left">
+        <a href="/" class="block_two_logo">
+            <div class="tool_logo1">
+                <img src="images/toolbar/logo1.svg" width="100%" />
+            </div>
+            <div class="tool_logo2">
+                <img src="images/toolbar/logo2.svg" width="100%" />
+            </div>
+        </a>
+        <div class="tool_titel">
+            {{#tabs}}
+                <a href="{{href}}" class="cl_btn_in_navBar"><div class="btn_in_navBar">{{name}}</div></a>
+            {{/tabs}}
+        </div>
+    </div>
+    <div class="tool_right">
+        <div class="tool_img">
+            {{#use_img}}
+                <img src="data:image/jpg;base64,{{user_photo}}" class="small_user_photo" />
+            {{/use_img}}
+            {{#use_default_img}}
+                <div class = "user_img_bg">
+                    <div class="char_in_img" id="char_in_img">{{first_char}}</div>
+                </div>
+            {{/use_default_img}}
+        </div>
+        <div class="tool_user_info">
+            <div class="user_name" id="user_name">{{AuthUser.last_name}} {{AuthUser.name}}</div>
+            <div class="org">{{role}}</div>
+            <div class="project_id" id="project_id" hidden>0</div>
+            <div class="shop_id" id="shop_id" hidden>0</div>
+            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+        </div>
+        <div class="tool_btn_log_out">
+            <a rel="nofollow" data-method="post" href="/logout">
+                <img src="images/toolbar/img_btn_sign_out.svg" width="100%" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="all_blocks">
+    <form method="post" enctype="multipart/form-data" action="/updateUser">
+        <div class="bg_one_user_page">
+            <div class="block1">
+                <div class="block_img">
+                    <div style="position: relative">
+                        <a href="javascript:clearPhoto()" style="display: none; margin-top: 3px; margin-right: 3px; width: 15px;height: 15px;position: absolute;top: 0;right: 0" id="btn_clear_photo">
+                            <img src="images/close.png" width="15px" height="15px"/>
+                        </a>
+                        <label for="custom-file-upload" class="append">
+                            {{#seeUser.photo.res}}
+                                <img src="data:image/jpg;base64,{{seeUser.photo.res}}" width="256px" height="256px" id="img_user_in_form_add" style="object-fit: cover"/>
+                            {{/seeUser.photo.res}}
+                            {{^seeUser.photo.res}}
+                                <img src="images/user_photo.jpg" width="256px" height="256px" id="img_user_in_form_add" style="object-fit: cover">
+                            {{/seeUser.photo.res}}
+                            <input type="file" name="file_user_photo" id="custom-file-upload"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="block_edit_fio">
+                    <input class="input_fio" value="{{#seeUser.id}}{{seeUser.id}}{{/seeUser.id}}" name="id" hidden>
+                    <input class="input_fio" value="{{#seeUser.active}}{{seeUser.active}}{{/seeUser.active}}{{^seeUser.active}}false{{/seeUser.active}}" name="active" hidden>
+                    <div class="text_up_input">Фамилия</div>
+                    <div class="input2">
+                        <input class="input_fio" id="name_task" placeholder="Фамилия" value="{{#seeUser.last_name}}{{seeUser.last_name}}{{/seeUser.last_name}}" name="last_name">
+                    </div>
+                    <div class="text_up_input">Имя</div>
+                    <div class="input2">
+                        <input class="input_fio" id="name_task" placeholder="Имя" value="{{#seeUser.name}}{{seeUser.name}}{{/seeUser.name}}" name="name">
+                    </div>
+                    <div class="text_up_input">Отчество</div>
+                    <div class="input2">
+                        <input class="input_fio" id="name_task" placeholder="Отчество" value="{{#seeUser.patronymic}}{{seeUser.patronymic}}{{/seeUser.patronymic}}" name="patronymic">
+                    </div>
+                    <div class="edit_login_and_password">
+                        <div style="flex-grow: 1;margin-right: 10px">
+                            <div class="text_up_input">Логин</div>
+                            <div class="input2">
+                                <input class="input_fio" id="name_task" placeholder="Логин" value="{{#seeUser.login}}{{seeUser.login}}{{/seeUser.login}}" name="login">
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;margin-left: 10px">
+                            <div class="text_up_input">Пароль</div>
+                            <div class="input2">
+                                <input class="input_fio" id="name_task" placeholder="Пароль" value="{{#seeUser.password}}{{seeUser.password}}{{/seeUser.password}}" name="password">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text_up_input2">------Нажми на фото чтобы его поменять------</div>
+            <div class="block_edit2">
+                <div class="text_up_input">Дата рождения</div>
+                <div class="input2">
+                    <input class="input_fio" id="name_task" placeholder="Дата рождения" value="{{#seeUser.moreUserInfo.birthday}}{{seeUser.moreUserInfo.birthday}}{{/seeUser.moreUserInfo.birthday}}" name="moreUserInfo.birthday">
+                </div>
+                <div class="text_up_input">Должность</div>
+                <div class="input2">
+                    <select name="role" id="imp-select" class="imp_select">
+                        <option value="Работник">--Значение по умолчанию--</option>
+                        <option value="Ревизор">Ревизор</option>
+                        <option value="Главный бухгалтер">Главный бухгалтер</option>
+                        <option value="Юрист">Юрист</option>
+                        <option value="Директор">Директор</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+
+                <script>
+                    document.getElementById('imp-select').value = "{{#seeUser.role}}{{seeUser.role}}{{/seeUser.role}}"
+                </script>
+
+                <div class="text_up_input">Номер телефона</div>
+                <div class="input2">
+                    <input class="input_fio" id="name_task" placeholder="Номер телефона" value="{{#seeUser.moreUserInfo.phone}}{{seeUser.moreUserInfo.phone}}{{/seeUser.moreUserInfo.phone}}" name="moreUserInfo.phone">
+                </div>
+                <div class="text_up_input">Подробная информация</div>
+                <div class="input2">
+                    <textarea class="input_messqge input_info3" id="description_input" placeholder="Подробная информация" name="moreUserInfo.all_info">{{#seeUser.moreUserInfo.all_info}}{{seeUser.moreUserInfo.all_info}}{{/seeUser.moreUserInfo.all_info}}</textarea>
+                </div>
+            </div>
+            <div class="btns">
+                <button class="btn_type_1" type="submit">
+                    <div class="text_type_1">Сохранить</div>
+                </button>
+                <a href="/UserProfile?id={{user_id}}" style="text-decoration: none">
+                <div class="btn_type_2">
+                    <div class="text_type_2">Отмена</div>
+                </div>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

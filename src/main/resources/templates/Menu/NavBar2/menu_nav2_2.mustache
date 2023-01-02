@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" href="css/navBar/bodyAndFonts.css" rel="stylesheet"/>
+    <link type="text/css" href="css/navBar/navBarAllPage.css" rel="stylesheet"/>
+
+    <link type="text/css" href="css/navBar2Pages/navbar2.css" rel="stylesheet"/>
+    <link type="text/css" href="css/navBar2Pages/page2.css" rel="stylesheet"/>
+
+    <script src="scripts/navBar2/page2/use_dir.js"></script>
+
+</head>
+<body>
+
+<div class="toolbar_menu shadow">
+    <div class="tool_left">
+        <a href="/" class="block_two_logo">
+            <div class="tool_logo1">
+                <img src="images/toolbar/logo1.svg" width="100%" />
+            </div>
+            <div class="tool_logo2">
+                <img src="images/toolbar/logo2.svg" width="100%" />
+            </div>
+        </a>
+        <div class="tool_titel">
+            {{#tabs}}
+                <a href="{{href}}" class="cl_btn_in_navBar"><div class="btn_in_navBar">{{name}}</div></a>
+            {{/tabs}}
+        </div>
+    </div>
+    <div class="tool_right">
+        <div class="tool_img">
+            {{#use_img}}
+                <img src="data:image/jpg;base64,{{user_photo}}" class="small_user_photo" />
+            {{/use_img}}
+            {{#use_default_img}}
+                <div class = "user_img_bg">
+                    <div class="char_in_img" id="char_in_img">{{first_char}}</div>
+                </div>
+            {{/use_default_img}}
+        </div>
+        <div class="tool_user_info">
+            <div class="user_name" id="user_name">{{AuthUser.name}} {{AuthUser.last_name}}</div>
+            <div class="org">{{role}}</div>
+            <div class="project_id" id="project_id" hidden>0</div>
+            <div class="shop_id" id="shop_id" hidden>0</div>
+            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+        </div>
+        <div class="tool_btn_log_out">
+            <a rel="nofollow" data-method="post" href="/logout">
+                <img src="images/toolbar/img_btn_sign_out.svg" width="100%" />
+            </a>
+        </div>
+    </div>
+</div>
+<div class="navBar2_in">
+    <div class="left_btns">
+        <a href="/navbar2-1" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">КОНДИТЕРСКОЕ<br>ПРОИЗВОДСТВО</div>
+            </div>
+        </a>
+        <a href="/navbar2-2" style="text-decoration: none">
+            <div class="btn_in_navBar2_ok">
+                <div class="text_in_navbar2_ok">ИНФОРМАЦИОННЫЙ ЦЕНТР</div>
+            </div>
+        </a>
+        <a href="/navbar2-3" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">МОИ ЗАДАЧИ</div>
+            </div>
+        </a>
+        <a href="/navbar2-4" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">МОИ ЗАЯВКИ</div>
+            </div>
+        </a>
+    </div>
+    <div class="right_btns">
+
+    </div>
+</div>
+
+<div class="block_up_dir"></div>
+
+<div class="see_files_in_small_dir" id="files_in_small_dir">
+    <div class="toolBar_in_small_dir">
+        <div class="left_block_in_toolbar">
+            <div style="width: 20px"></div>
+            <a href="javascript:clouseSmallDir()" style="text-decoration: none">
+                <div>
+                    <img src="images/ic_btn_back.svg" width="20px" />
+                </div>
+            </a>
+            <div class="name_open_dir">Название директории</div>
+        </div>
+        <div class="btns_to_add_fold">
+            <a href="#" style="text-decoration: none">
+                <div class="btn_add_in_small_dir">
+                    <div class="text_in_btn_add">Добавить папку</div>
+                </div>
+            </a>
+            <a href="#" style="text-decoration: none">
+                <div class="btn_add_in_small_dir">
+                    <div class="text_in_btn_add">Добавить файл</div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    <div class="block_all_files_in_dir">
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+        <div class="one_file">
+            <div class="img_to_one_file">
+                <img src="images/ic_file.png" width="80px" />
+            </div>
+            <div class="name_file">
+                <div class="text_name_file">папка с данными</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="all_top_dir" id="id_all_top_dirs">
+    <div class="one_top_dir">
+        <div class="block_titel">
+            <div class="text_top_dir_name">ОПЕРАТИВНОЕ УПРАВЛЕНИЕ</div>
+        </div>
+        <a href="javascript:openSmallDir()" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Трекинг задач, КПЭ</div>
+                <div class="settings_in_small_dir">
+                    <img src="images/ic_settings.svg" width="20px" />
+                </div>
+                <div class="delete_small_dir">
+                    <img src="images/back_bottom_task.png" width="20px" />
+                </div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Безопасность</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Качество</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Производство</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Экономика, затраты (руб)</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Персонал</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Склад готовой продукции</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Отдел продаж</div>
+            </div>
+        </a>
+    </div>
+    <div class="one_top_dir">
+        <div class="block_titel">
+            <div class="text_top_dir_name">ПРОЕКТНОЕ УПРАВЛЕНИЕ</div>
+        </div>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Административный каталог</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Уставные документы</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Отчеты</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Финансово-экономические документы</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Руководство по фирменному стилю</div>
+            </div>
+        </a>
+    </div>
+    <div class="one_top_dir">
+        <div class="block_titel">
+            <div class="text_top_dir_name">УПРАВЛЕНИЕ ПРОБЛЕМАМИ</div>
+        </div>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Приветствие директора</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Миссия и ценности</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Структура предприятия</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Сведения о предприятии</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">История</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Персоналии</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Почетные работники</div>
+            </div>
+        </a>
+        <a href="#" style="text-decoration: none">
+            <div class="dir_in_top_dir">
+                <div class="name_dir_in_top_dir">Виртуальный тур</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>

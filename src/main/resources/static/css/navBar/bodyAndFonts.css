@@ -1,0 +1,27 @@
+
+@font-face {
+    font-family: Lato-Bold;
+    src: url("../myFonts/lato/Lato-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Lato-ExtraBold;
+    src: url("../myFonts/lato/Lato-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Lato-Medium;
+    src: url("../myFonts/lato/Lato-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Lato-Regular;
+    src: url("../myFonts/lato/Lato-Regular.ttf") format("truetype");
+}
+
+
+
+body{
+    margin: 0px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02)), #FFFFFF;
+}

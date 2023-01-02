@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" href="css/navBar/bodyAndFonts.css" rel="stylesheet"/>
+    <link type="text/css" href="css/navBar/navBarAllPage.css" rel="stylesheet"/>
+
+    <link type="text/css" href="css/navBar2Pages/navbar2.css" rel="stylesheet"/>
+    <link type="text/css" href="css/navBar2Pages/page1.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<div class="toolbar_menu shadow">
+    <div class="tool_left">
+        <a href="/" class="block_two_logo">
+            <div class="tool_logo1">
+                <img src="images/toolbar/logo1.svg" width="100%" />
+            </div>
+            <div class="tool_logo2">
+                <img src="images/toolbar/logo2.svg" width="100%" />
+            </div>
+        </a>
+        <div class="tool_titel">
+            {{#tabs}}
+                <a href="{{href}}" class="cl_btn_in_navBar"><div class="btn_in_navBar">{{name}}</div></a>
+            {{/tabs}}
+        </div>
+    </div>
+    <div class="tool_right">
+        <div class="tool_img">
+            {{#use_img}}
+                <img src="data:image/jpg;base64,{{user_photo}}" class="small_user_photo" />
+            {{/use_img}}
+            {{#use_default_img}}
+                <div class = "user_img_bg">
+                    <div class="char_in_img" id="char_in_img">{{first_char}}</div>
+                </div>
+            {{/use_default_img}}
+        </div>
+        <div class="tool_user_info">
+            <div class="user_name" id="user_name">{{AuthUser.name}} {{AuthUser.last_name}}</div>
+            <div class="org">{{role}}</div>
+            <div class="project_id" id="project_id" hidden>0</div>
+            <div class="shop_id" id="shop_id" hidden>0</div>
+            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+        </div>
+        <div class="tool_btn_log_out">
+            <a rel="nofollow" data-method="post" href="/logout">
+                <img src="images/toolbar/img_btn_sign_out.svg" width="100%" />
+            </a>
+        </div>
+    </div>
+</div>
+<div class="navBar2_in">
+    <div class="left_btns">
+        <a href="/navbar2-1" style="text-decoration: none">
+            <div class="btn_in_navBar2_ok">
+                <div class="text_in_navbar2_ok">КОНДИТЕРСКОЕ<br>ПРОИЗВОДСТВО</div>
+            </div>
+        </a>
+        <a href="/navbar2-2" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">ИНФОРМАЦИОННЫЙ ЦЕНТР</div>
+            </div>
+        </a>
+        <a href="/navbar2-3" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">МОИ ЗАДАЧИ</div>
+            </div>
+        </a>
+        <a href="/navbar2-4" style="text-decoration: none">
+            <div class="btn_in_navBar2_cansel">
+                <div class="text_in_navbar2_cansel">МОИ ЗАЯВКИ</div>
+            </div>
+        </a>
+    </div>
+    <div class="right_btns">
+
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>

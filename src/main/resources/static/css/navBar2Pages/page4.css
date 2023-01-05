@@ -577,6 +577,16 @@
 
 
 /* ADD NEW TASK */
+.form_send_task{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow-x: auto;
+    height: 100%;
+    margin-left: 20px;
+    width: -webkit-fill-available;
+}
+
 .add_new_task{
     display: none;
     justify-content: space-between;
@@ -640,6 +650,25 @@
     padding: 12px;
 }
 
+.append {
+    /*position: relative;*/
+    display: block;
+    height: 36px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.append > input[type="file"]{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    /*clip: rect(0,0,0,0);*/
+    border: 0;
+}
+
 .btn_add_file_to_task{
     width: 100%;
     height: 32px;
@@ -647,6 +676,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.block_add_file{
+    width: 100%;
+    height: 32px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name_use_file{
+    /* Body 14\20 */
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    letter-spacing: 0.01em;
+    color: #5d6ee4;
 }
 
 
@@ -695,6 +746,7 @@
 
 
 .from_add_small_task{
+    display: none;
     margin-left: 20px;
     margin-right: 10px;
     width: -webkit-fill-available;
@@ -783,6 +835,28 @@
     align-items: center;
     justify-content: center;
 }
+
+/* ADD USERS TO TASK */
+.add_users_to_task{
+    display: none;
+    margin-left: 20px;
+    margin-right: 10px;
+    width: -webkit-fill-available;
+    height: 400px;
+}
+
+
+.titel_users{
+    margin-left: 20px;
+    font-size: 22px;
+    font-family: Lato-Bold;
+    color: #000000;
+}
+
+
+
+
+
 
 
 

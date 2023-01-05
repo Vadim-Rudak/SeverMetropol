@@ -55,9 +55,7 @@
         <div class="tool_user_info">
             <div class="user_name" id="user_name">{{AuthUser.name}} {{AuthUser.last_name}}</div>
             <div class="org">{{role}}</div>
-            <div class="project_id" id="project_id" hidden>0</div>
-            <div class="shop_id" id="shop_id" hidden>0</div>
-            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+            <div id="user_id" hidden>{{AuthUser.id}}</div>
         </div>
         <div class="tool_btn_log_out">
             <a rel="nofollow" data-method="post" href="/logout">
@@ -118,7 +116,7 @@
                         <div class="text_in_btn_add_task">Ремонтная служба</div>
                     </div>
                 </a>
-                <a href="#" style="text-decoration: none">
+                <a href="javascript:addOrderTask()" style="text-decoration: none">
                     <div class="btn_add_new_task">
                         <div class="text_in_btn_add_task">Закупка канцелярии</div>
                     </div>
@@ -339,53 +337,98 @@
 
     </div>
 
-    <div class="add_new_task" id="add_new_task">
-        <div class="form_new_task">
-            <div class="titel_new_task">Новая заявка</div>
-            <div>
-                <div class="text_up_input">Название</div>
-                <div class="input2">
-                    <input class="input_titel" id="name_task" placeholder="Введите название">
-                </div>
-            </div>
-            <div class="text_up_input">Описание</div>
-            <div class="input2">
-                <textarea class="input_messqge input_info_problem" id="description_input" placeholder="Опишите проблему"></textarea>
-            </div>
-            <div class="btn_add_file_to_task">
-                <div class="text_in_btn_add_file">Прикрепить файл</div>
-            </div>
-        </div>
-        <div class="from_add_small_task">
-            <div style="display: flex;justify-content: space-between;align-items: center">
-                <div class="titel_new_small_task">Список подзадач</div>
-                <div>
-                    <a href="javascript:PopUpShowAddSmallTask()" style="text-decoration: none">
-                        <img src="images/add-plus.svg" width="20px" />
-                    </a>
-                </div>
-            </div>
-            <div class="list_all_small_tasks">
-                <div>
-                    <img src="images/ic_no_small_task.svg" width="200px" />
-                    <div class="text_no_small_tasks">Список подзадач пуст</div>
-                </div>
-            </div>
 
-        </div>
-        <div class="btn_save_and_cansel">
-            <a href="#" style="text-decoration: none; margin-right: 20px" >
-                <div class="btn_add_task">
-                    <div class="text_filter_type_1">Сохранить</div>
+    <div class="add_new_task" id="add_new_task">
+        <form method="post" class="form_send_task" enctype="multipart/form-data" id="form_to_post_task" action="/addNewUser">
+            <div class="form_new_task">
+                <div class="titel_new_task">Новая заявка</div>
+                <input name="user_id" value="{{AuthUser.id}}" hidden>
+                <div>
+                    <div class="text_up_input">Название</div>
+                    <div class="input2">
+                        <input class="input_titel" id="name_task" placeholder="Введите название" name="name_task">
+                    </div>
                 </div>
-            </a>
-            <a href="/navbar2-4" style="text-decoration: none">
-                <div class="btn_cansel">
-                    <div class="text_filter_type_2">Отмена</div>
+                <div class="text_up_input">Описание</div>
+                <div class="input2">
+                    <textarea class="input_messqge input_info_problem" id="description_input" placeholder="Опишите проблему" name="more_info"></textarea>
                 </div>
-            </a>
-        </div>
+                <label for="document" class="append">
+                    <div class="btn_add_file_to_task" id="btn_add_document">
+                        <div class="text_in_btn_add_file">Прикрепить файл</div>
+                    </div>
+                    <div class="block_add_file" id="block_add_file">
+                        <div class="name_use_file" id="name_document"></div>
+                        <div>
+                            <a href="javascript:delete_file()" style="text-decoration: none;display: flex;align-items: center">
+                                <img src="images/ic_cansel_file.png" width="16px" height="16px" />
+                            </a>
+                        </div>
+                    </div>
+                    <input type="file" name="doc_file" id="document"/>
+                </label>
+            </div>
+            <div class="from_add_small_task" id="block_small_task">
+                <div style="display: flex;justify-content: space-between;align-items: center">
+                    <div class="titel_new_small_task">Список подзадач</div>
+                    <div>
+                        <a href="javascript:PopUpShowAddSmallTask()" style="text-decoration: none">
+                            <img src="images/add-plus.svg" width="20px" />
+                        </a>
+                    </div>
+                </div>
+                <div class="list_all_small_tasks">
+                    <div>
+                        <img src="images/ic_no_small_task.svg" width="200px" />
+                        <div class="text_no_small_tasks">Список подзадач пуст</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="add_users_to_task" id="block_add_users">
+                <div style="display: flex;justify-content: space-between;align-items: center">
+                    <div class="titel_users">Выберите пользователей для отправки на подпись</div>
+                    <div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;margin-left: 20px">
+                    <div style="margin-top: 5px">
+                        <input type="checkbox" id="scales" name="send_to_user1">
+                        <label for="scales">Ревизор</label>
+                    </div>
+                    <div style="margin-top: 5px">
+                        <input type="checkbox" id="scales" name="send_to_user2">
+                        <label for="scales">Юрист</label>
+                    </div>
+                    <div style="margin-top: 5px">
+                        <input type="checkbox" id="scales" name="send_to_user3">
+                        <label for="scales">Исполнитель</label>
+                    </div>
+                    <div style="margin-top: 5px">
+                        <input type="checkbox" id="scales" name="send_to_user4">
+                        <label for="scales">Главный бухгалтер</label>
+                    </div>
+                    <div style="margin-top: 5px">
+                        <input type="checkbox" id="scales" name="send_to_user5">
+                        <label for="scales">Директор</label>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_save_and_cansel">
+                <div style="text-decoration: none; margin-right: 20px">
+                    <button class="btn_add_task" type="submit">
+                        <div class="text_filter_type_1">Сохранить</div>
+                    </button>
+                </div>
+                <a href="/navbar2-4" style="text-decoration: none">
+                    <div class="btn_cansel">
+                        <div class="text_filter_type_2">Отмена</div>
+                    </div>
+                </a>
+            </div>
+        </form>
     </div>
+
 
     <div class="big_calendar" id="id_full_calendar">
         <div class="box_for_calendar" id='calendar-container'>

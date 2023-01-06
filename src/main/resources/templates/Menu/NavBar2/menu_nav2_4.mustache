@@ -221,118 +221,46 @@
                 <th class="column11">Директор</th>
                 <th class="column12">История</th>
             </tr>
-            <tr class="row_with_info">
-                <td class="column1">15</td>
-                <td class="column2">Текст заявки</td>
-                <td class="column3">Новая</td>
-                <td class="column4">01.01.1970</td>
-                <td class="column5">документ.pdf</td>
-                <td class="column6"> </td>
-                <td class="column7">
-                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
-                </td>
-                <td class="column8">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column9">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column10">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column11">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column12">
-                    <div style="display: flex;justify-content: center;align-items: center">
-                        <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
-                    </div>
-                </td>
-            </tr>
-            <tr class="row_with_info">
-                <td class="column1">15</td>
-                <td class="column2">Текст заявки</td>
-                <td class="column3">Новая</td>
-                <td class="column4">01.01.1970</td>
-                <td class="column5">документ.pdf</td>
-                <td class="column6"> </td>
-                <td class="column7">
-                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
-                </td>
-                <td class="column8">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column9">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column10">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column11">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column12">
-                    <div style="display: flex;justify-content: center;align-items: center">
-                        <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
-                    </div>
-                </td>
-            </tr>
-            <tr class="row_with_info">
-                <td class="column1">15</td>
-                <td class="column2">Текст заявки</td>
-                <td class="column3">Новая</td>
-                <td class="column4">01.01.1970</td>
-                <td class="column5">документ.pdf</td>
-                <td class="column6"> </td>
-                <td class="column7">
-                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
-                </td>
-                <td class="column8">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column9">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column10">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column11">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column12">
-                    <div style="display: flex;justify-content: center;align-items: center">
-                        <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
-                    </div>
-                </td>
-            </tr>
-            <tr class="row_with_info">
-                <td class="column1">15</td>
-                <td class="column2">Текст заявки</td>
-                <td class="column3">Новая</td>
-                <td class="column4">01.01.1970</td>
-                <td class="column5">документ.pdf</td>
-                <td class="column6"> </td>
-                <td class="column7">
-                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
-                </td>
-                <td class="column8">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column9">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column10">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column11">
-                    <input type="checkbox" id="scales" name="scales" class="check_box">
-                </td>
-                <td class="column12">
-                    <div style="display: flex;justify-content: center;align-items: center">
-                        <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
-                    </div>
-                </td>
-            </tr>
+            {{#MyTasks}}
+                <tr class="row_with_info">
+                    <td class="column1">{{#id}}{{id}}{{/id}}</td>
+                    <td class="column2">{{#name_task}}{{name_task}}{{/name_task}}</td>
+                    <td class="column3">{{#status}}{{status}}{{/status}}</td>
+                    <td class="column4">{{#date_add}}{{date_add}}{{/date_add}} {{#time_add}}{{time_add}}{{/time_add}}</td>
+                    <td class="column5">{{#document.name_file}}{{document.name_file}}{{/document.name_file}}</td>
+                    <td class="column6"> </td>
+                    <td class="column7">
+                        {{#send_to_user1}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user1}}checked{{/status_user1}}>
+                        {{/send_to_user1}}
+                    </td>
+                    <td class="column8">
+                        {{#send_to_user2}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user2}}checked{{/status_user2}}>
+                        {{/send_to_user2}}
+                    </td>
+                    <td class="column9">
+                        {{#send_to_user3}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user3}}checked{{/status_user3}}>
+                        {{/send_to_user3}}
+                    </td>
+                    <td class="column10">
+                        {{#send_to_user4}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user4}}checked{{/status_user4}}>
+                        {{/send_to_user4}}
+                    </td>
+                    <td class="column11">
+                        {{#send_to_user5}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user5}}checked{{/status_user5}}>
+                        {{/send_to_user5}}
+                    </td>
+                    <td class="column12">
+                        <div style="display: flex;justify-content: center;align-items: center">
+                            <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
+                        </div>
+                    </td>
+                </tr>
+            {{/MyTasks}}
         </table>
 
     </div>

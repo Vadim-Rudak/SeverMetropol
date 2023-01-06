@@ -13,7 +13,10 @@ public class Task {
     private int id;
     private int user_id;
     private String name_task;
+    private String status;
     private String more_info;
+    private String date_add;
+    private String time_add;
     private boolean use_order;
     private boolean use_default;
     private Document document;

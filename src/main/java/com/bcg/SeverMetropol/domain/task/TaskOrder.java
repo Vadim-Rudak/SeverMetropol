@@ -18,6 +18,7 @@ public class TaskOrder extends Task{
     private boolean send_to_user5;
     private boolean status_user5;
     public TaskOrder(){
+        super.setStatus("Новая");
         super.setUse_order(true);
         super.setUse_default(false);
     }

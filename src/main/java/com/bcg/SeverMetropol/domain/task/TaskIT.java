@@ -1,4 +1,4 @@
 package com.bcg.SeverMetropol.domain.task;
 
-public class TaskIT {
+public class TaskIT extends Task{
 }

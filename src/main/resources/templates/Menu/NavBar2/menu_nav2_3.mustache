@@ -151,36 +151,40 @@
                 <th class="column7"></th>
                 <th class="column8">Согласие</th>
             </tr>
-            <tr class="row_with_info">
-                <td class="column1">11</td>
-                <td class="column2">Текст заявки</td>
-                <td class="column3">Новая</td>
-                <td class="column4">01.01.1970</td>
-                <td class="column5">документ.pdf</td>
-                <td class="column6"> </td>
-                <td class="column7">
-                    <a href="#" style="text-decoration: none">
-                        <div class="btn_see_file_in_task">
-                            <div class="text_see_file_in_task">Открыть файл</div>
-                        </div>
-                    </a>
-                </td>
-                <td class="column8">
-                    <input type="checkbox" id="scales" name="scales" class="check_box" checked>
-                </td>
-            </tr>
-            <tr class="row_with_info">
-                <td class="column1">11</td>
-                <td class="column2">Текст заявки</td>
-                <td class="column3">Новая</td>
-                <td class="column4">01.01.1970</td>
-                <td class="column5">документ.pdf</td>
-                <td class="column6"> </td>
-                <td class="column7">
-                </td>
-                <td class="column8">
-                </td>
-            </tr>
+            {{#listTaskForMe}}
+                <tr class="row_with_info">
+                    <td class="column1">{{#id}}{{id}}{{/id}}</td>
+                    <td class="column2">{{#name_task}}{{name_task}}{{/name_task}}</td>
+                    <td class="column3">{{#status}}{{status}}{{/status}}</td>
+                    <td class="column4">{{#date_add}}{{date_add}}{{/date_add}} {{#time_add}}{{time_add}}{{/time_add}}</td>
+                    <td class="column5">{{#document.name_file}}{{document.name_file}}{{/document.name_file}}</td>
+                    <td class="column6"> </td>
+                    <td class="column7">
+                        <a href="#" style="text-decoration: none">
+                            <div class="btn_see_file_in_task">
+                                <div class="text_see_file_in_task">Открыть файл</div>
+                            </div>
+                        </a>
+                    </td>
+                    <td class="column8">
+                        {{#send_to_user1}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user1}}checked{{/status_user1}}>
+                        {{/send_to_user1}}
+                        {{#send_to_user2}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user2}}checked{{/status_user2}}>
+                        {{/send_to_user2}}
+                        {{#send_to_user3}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user3}}checked{{/status_user3}}>
+                        {{/send_to_user3}}
+                        {{#send_to_user4}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user4}}checked{{/status_user4}}>
+                        {{/send_to_user4}}
+                        {{#send_to_user5}}
+                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user5}}checked{{/status_user5}}>
+                        {{/send_to_user5}}
+                    </td>
+                </tr>
+            {{/listTaskForMe}}
         </table>
 
     </div>

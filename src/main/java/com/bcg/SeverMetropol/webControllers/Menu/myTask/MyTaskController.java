@@ -7,18 +7,33 @@ import com.bcg.SeverMetropol.domain.User;
 import com.bcg.SeverMetropol.domain.task.Document;
 import com.bcg.SeverMetropol.domain.task.TaskOrder;
 import com.bcg.SeverMetropol.repos.DocumentRepo;
+import com.bcg.SeverMetropol.repos.PhotoRepo;
 import com.bcg.SeverMetropol.repos.TaskRepo;
+import com.bcg.SeverMetropol.repos.UserRepo;
+import com.bcg.SeverMetropol.webControllers.Menu.ToolBarUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MyTaskController {
+
+    @Autowired
+    private UserRepo userRepo;
+
+    @Autowired
+    private PhotoRepo photoRepo;
 
     @Autowired
     private TaskRepo taskRepo;
@@ -27,11 +42,31 @@ public class MyTaskController {
     private DocumentRepo documentRepo;
 
 
+    @GetMapping("/navbar2-4")
+    public String navBar2page4(Map<String, Object> model, Authentication authentication){
+
+        User user = userRepo.findByLogin(authentication.getName());
+        Photo photo = photoRepo.findUserPhoto(user.getId());
+
+        model.putAll(ToolBarUserInfo.getUserMap(user,photo));
+
+        List<TaskOrder> list_my_task = taskRepo.getAllOneUser(user.getId());
+        model.put("MyTasks",list_my_task);
+
+        return "Menu/NavBar2/menu_nav2_4";
+    }
+
+
     @RequestMapping("/addNewOrderTask")
     public String addNewOrderTask(TaskOrder taskOrder, @RequestParam(name="doc_file", required=false, defaultValue="null") MultipartFile doc_file) throws IOException {
 
         int last_id = taskRepo.findLastId() + 1;
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
+        LocalDateTime now = LocalDateTime.now();
         taskOrder.setId(last_id);
+        taskOrder.setDate_add(dateFormat.format(now));
+        taskOrder.setTime_add(timeFormat.format(now));
         taskRepo.saveOrdTask(taskOrder);
 
         if (!doc_file.isEmpty()){

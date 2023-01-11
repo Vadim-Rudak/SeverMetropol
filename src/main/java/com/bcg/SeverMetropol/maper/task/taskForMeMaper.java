@@ -1,9 +1,8 @@
-package com.bcg.SeverMetropol.maper;
+package com.bcg.SeverMetropol.maper.task;
 
 import com.bcg.SeverMetropol.domain.task.Document;
 import com.bcg.SeverMetropol.domain.task.TaskOrder;
 import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

@@ -3,7 +3,6 @@ package com.bcg.SeverMetropol.maper;
 import com.bcg.SeverMetropol.domain.*;
 import lombok.NoArgsConstructor;
 import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

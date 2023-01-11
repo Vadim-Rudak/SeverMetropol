@@ -231,32 +231,32 @@
                     <td class="column6"> </td>
                     <td class="column7">
                         {{#send_to_user1}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user1}}checked{{/status_user1}}>
+                            <input type="checkbox" id="scales" name="scales" class="check_box" disabled {{#status_user1}}checked{{/status_user1}}>
                         {{/send_to_user1}}
                     </td>
                     <td class="column8">
                         {{#send_to_user2}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user2}}checked{{/status_user2}}>
+                            <input type="checkbox" id="scales" name="scales" class="check_box" disabled {{#status_user2}}checked{{/status_user2}}>
                         {{/send_to_user2}}
                     </td>
                     <td class="column9">
                         {{#send_to_user3}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user3}}checked{{/status_user3}}>
+                            <input type="checkbox" id="scales" name="scales" class="check_box" disabled {{#status_user3}}checked{{/status_user3}}>
                         {{/send_to_user3}}
                     </td>
                     <td class="column10">
                         {{#send_to_user4}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user4}}checked{{/status_user4}}>
+                            <input type="checkbox" id="scales" name="scales" class="check_box" disabled {{#status_user4}}checked{{/status_user4}}>
                         {{/send_to_user4}}
                     </td>
                     <td class="column11">
                         {{#send_to_user5}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user5}}checked{{/status_user5}}>
+                            <input type="checkbox" id="scales" name="scales" class="check_box" disabled {{#status_user5}}checked{{/status_user5}}>
                         {{/send_to_user5}}
                     </td>
                     <td class="column12">
                         <div style="display: flex;justify-content: center;align-items: center">
-                            <a href="javascript:PopUpShowHistory()" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
+                            <a href="javascript:PopUpShowHistory({{#id}}{{id}}{{/id}})" style="text-decoration: none"><img src="images/ic_history.svg" width="18px" /></a>
                         </div>
                     </td>
                 </tr>
@@ -321,19 +321,19 @@
                 </div>
                 <div style="margin-top: 20px;margin-left: 20px">
                     <div style="margin-top: 5px">
-                        <input type="checkbox" id="scales" name="send_to_user1">
+                        <input type="checkbox" id="scales" name="send_to_user2">
                         <label for="scales">Ревизор</label>
                     </div>
                     <div style="margin-top: 5px">
-                        <input type="checkbox" id="scales" name="send_to_user2">
+                        <input type="checkbox" id="scales" name="send_to_user4">
                         <label for="scales">Юрист</label>
                     </div>
                     <div style="margin-top: 5px">
-                        <input type="checkbox" id="scales" name="send_to_user3">
+                        <input type="checkbox" id="scales" name="send_to_user1">
                         <label for="scales">Исполнитель</label>
                     </div>
                     <div style="margin-top: 5px">
-                        <input type="checkbox" id="scales" name="send_to_user4">
+                        <input type="checkbox" id="scales" name="send_to_user3">
                         <label for="scales">Главный бухгалтер</label>
                     </div>
                     <div style="margin-top: 5px">
@@ -388,65 +388,24 @@
                         right: 'dayGridMonth,timeGridWeek,timeGridDay'
                     },
                     defaultView: 'dayGridMonth',
-                    defaultDate: '2022-12-26',
+                    defaultDate: '{{#date_now}}{{date_now}}{{/date_now}}{{^date_now}}2023-01-01{{/date_now}}',
                     navLinks: true, // can click day/week names to navigate views
                     editable: true,
                     eventLimit: true, // allow "more" link when too many events
                     events: [
+                        {{#MyTasks}}
+                            {
+                                title: '{{#name_task}}{{name_task}}{{/name_task}}',
+                                start: '2023-01-01',
+                                end: '2023-01-03'
+                            },
+                        {{/MyTasks}}
+                        // {
+                        //     title: 'Заявка 5',
+                        //     start: '2022-12-12T10:30:00',
+                        //     end: '2022-12-12T12:30:00'
+                        // }
                         {
-                            title: 'Заявка 1',
-                            start: '2022-12-01',
-                            end: '2022-12-05'
-                        },
-                        {
-                            title: 'Заявка 2',
-                            start: '2022-12-07',
-                            end: '2022-12-10'
-                        },
-                        {
-                            groupId: 999,
-                            title: 'Заявка 3',
-                            start: '2022-12-09T16:00:00'
-                        },
-                        {
-                            groupId: 999,
-                            title: 'Заявка 3',
-                            start: '2022-12-16T16:00:00'
-                        },
-                        {
-                            title: 'Заявка 4',
-                            start: '2022-12-11',
-                            end: '2022-12-13'
-                        },
-                        {
-                            title: 'Заявка 5',
-                            start: '2022-12-12T10:30:00',
-                            end: '2022-12-12T12:30:00'
-                        },
-                        {
-                            title: 'Заявка 6',
-                            start: '2022-12-12T12:00:00'
-                        },
-                        {
-                            title: 'Заявка 7',
-                            start: '2022-12-12T14:30:00'
-                        },
-                        {
-                            title: 'Заявка 8',
-                            start: '2022-12-12T17:30:00'
-                        },
-                        {
-                            title: 'Заявка 9',
-                            start: '2022-12-12T20:00:00'
-                        },
-                        {
-                            title: 'Заявка 10',
-                            start: '2022-12-13T07:00:00'
-                        },
-                        {
-                            title: 'Заявка 11',
-                            url: 'http://google.com/',
-                            start: '2022-12-28'
                         }
                     ]
                 });
@@ -470,9 +429,7 @@
                 <a href="javascript:PopUpHideHistory()" style="text-decoration: none"><img src="images/ic_cl_btn.svg" width="20px" height="20px" /></a>
             </div>
         </div>
-        <div class="block_history_info">
-            <div class="text_hist">20.12.2022 10:45 >> Заявка добавлена</div>
-            <div class="text_hist">20.12.2022 15:32 >> Заявка подписана юристом</div>
+        <div class="block_history_info" id="history_list">
         </div>
 
     </div>

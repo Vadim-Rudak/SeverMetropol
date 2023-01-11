@@ -8,6 +8,9 @@ public interface TaskRepo {
     void saveOrdTask(TaskOrder taskOrder);
     int findLastId();
 
+    void upDateTask(TaskOrder taskOrder);
+    TaskOrder findByTaskId(int id_task);
+
     List<TaskOrder> getAllOneUser(int user_id);
 
     List<TaskOrder> getAllTasksForMe(String user_role);

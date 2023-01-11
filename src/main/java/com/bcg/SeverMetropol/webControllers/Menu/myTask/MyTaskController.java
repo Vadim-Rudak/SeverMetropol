@@ -1,7 +1,8 @@
 package com.bcg.SeverMetropol.webControllers.Menu.myTask;
 
 
-import com.bcg.SeverMetropol.domain.MoreUserInfo;
+import com.bcg.SeverMetropol.constants.Constans;
+import com.bcg.SeverMetropol.domain.History;
 import com.bcg.SeverMetropol.domain.Photo;
 import com.bcg.SeverMetropol.domain.User;
 import com.bcg.SeverMetropol.domain.task.Document;
@@ -10,6 +11,7 @@ import com.bcg.SeverMetropol.repos.DocumentRepo;
 import com.bcg.SeverMetropol.repos.PhotoRepo;
 import com.bcg.SeverMetropol.repos.TaskRepo;
 import com.bcg.SeverMetropol.repos.UserRepo;
+import com.bcg.SeverMetropol.service.HistoryService;
 import com.bcg.SeverMetropol.webControllers.Menu.ToolBarUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -41,6 +43,9 @@ public class MyTaskController {
     @Autowired
     private DocumentRepo documentRepo;
 
+    @Autowired
+    private HistoryService historyService;
+
 
     @GetMapping("/navbar2-4")
     public String navBar2page4(Map<String, Object> model, Authentication authentication){
@@ -52,6 +57,10 @@ public class MyTaskController {
 
         List<TaskOrder> list_my_task = taskRepo.getAllOneUser(user.getId());
         model.put("MyTasks",list_my_task);
+
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        model.put("date_now",dateFormat.format(now));
 
         return "Menu/NavBar2/menu_nav2_4";
     }
@@ -77,6 +86,8 @@ public class MyTaskController {
             document.setRes(encodeString(doc_file.getBytes()));
             documentRepo.save(document);
         }
+
+        historyService.save(new History(last_id, Constans.HISTORY_ADD));
 
         return "redirect:/navbar2-4";
     }

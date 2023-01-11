@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-
 import javax.sql.DataSource;
 
 @Configuration
@@ -22,7 +21,7 @@ public class AppConfig {
 
     private final String URL = "url";
     private final String USER = "dbuser";
-//    private final String DRIVER = "driver";
+
     private final String PASSWORD = "dbpassword";
 
     @Bean
@@ -75,56 +74,10 @@ public class AppConfig {
     public DocumentRepo getDocumentDao(){
         return new DocumentImpl(getJdbcTemplate());
     }
-//
-//    @Bean
-//    public TaskRepo getTaskDao(){
-//        return new TaskImpl(getJdbcTemplate());
-//    }
-//
-//    @Bean
-//    public FileRepo getFileDao(){
-//        return new FileImpl(getJdbcTemplate());
-//    }
 
-//    @Bean
-//    public EventsImageRepo getEventsImageDao(){
-//        return new EventsImageImpl(getJdbcTemplate());
-//    }
-//
-//    @Bean
-//    public EventsRepo getEventsDao(){
-//        return new EventsImpl(getJdbcTemplate());
-//    }
-//
-//    @Bean
-//    public MoreUserInfoRepo getMoreUserInfoDao(){
-//        return new MoreUserInfoImpl(getJdbcTemplate());
-//    }
-//
-//    @Bean
-//    public PhotoRepo getPhotoDao(){
-//        return new PhotoImpl(getJdbcTemplate());
-//    }
-//
-//
-//    @Bean
-//    public RegRepo getRegDao(){
-//        return new RegImpl(getJdbcTemplate());
-//    }
-//
-//    @Bean
-//    public UseEventsRepo getUserEventsDao(){
-//        return new UseEventsImpl(getJdbcTemplate());
-//    }
-//
-//    @Bean
-//    public UserRepo getUserDao(){
-//        return new UserImpl(getJdbcTemplate());
-//    }
-//
-//    @Bean
-//    public DialogRepo getDialogDao(){
-//        return new DialogImpl(getJdbcTemplate());
-//    }
+    @Bean
+    public HistoryRepo getHistoryDao(){
+        return new HistoryImpl(getJdbcTemplate());
+    }
 
 }

@@ -7,6 +7,7 @@ import lombok.*;
 @ToString
 public class TaskOrder extends Task{
 
+    private int id_task;
     private boolean send_to_user1;
     private boolean status_user1;
     private boolean send_to_user2;

@@ -67,8 +67,36 @@ function PopUpHideHistory(){
     $("#popUpHistory").hide();
 }
 
-function PopUpShowHistory(){
+function PopUpShowHistory(id_task){
     $("#popUpHistory").show();
+    getListHistory(id_task)
+}
+
+function getListHistory(task_id) {
+    let xhr = new XMLHttpRequest();
+    var url = "/taskHistory?task_id=" + task_id;
+
+    xhr.open('GET', url, false);
+    xhr.send();
+    if (xhr.status !== 200){
+        alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+    }else {
+        var list_items = document.getElementById("history_list")
+        var json = JSON.parse(xhr.response);
+        if(json.length === 0){
+            //None history list
+            console.log("None list")
+            list_items.innerHTML = ""
+        }else {
+            //Have history list
+            var all_item_to_add = "";
+            for (var i=0;i<json.length;i++){
+                var item = json[i];
+                all_item_to_add += '<div class="text_hist">' + item.date_add + " " + item.time_add + " >> " + item.info + '</div>';
+            }
+            list_items.innerHTML = all_item_to_add;
+        }
+    }
 }
 
 function addItTask() {

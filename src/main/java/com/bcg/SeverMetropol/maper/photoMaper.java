@@ -1,12 +1,9 @@
 package com.bcg.SeverMetropol.maper;
 
 import com.bcg.SeverMetropol.domain.Photo;
-import com.bcg.SeverMetropol.domain.User;
 import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 
 public class photoMaper implements RowMapper<Photo> {
 

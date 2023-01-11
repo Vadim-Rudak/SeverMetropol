@@ -4,10 +4,7 @@ import com.bcg.SeverMetropol.domain.User;
 import com.bcg.SeverMetropol.maper.userMaper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-
 import java.util.List;
-
 
 public class UserImpl implements UserRepo {
 

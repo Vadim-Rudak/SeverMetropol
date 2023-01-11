@@ -2,7 +2,6 @@ package com.bcg.SeverMetropol.repos;
 
 import com.bcg.SeverMetropol.domain.News;
 import com.bcg.SeverMetropol.maper.newsMaper;
-import com.bcg.SeverMetropol.maper.userMaper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 

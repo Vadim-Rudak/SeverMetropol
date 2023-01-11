@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../../static/css/navBar2Pages/page3.css"/>
     <meta charset="UTF-8">
     <title>Меню</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +10,8 @@
 
     <link type="text/css" href="css/navBar2Pages/navbar2.css" rel="stylesheet"/>
     <link type="text/css" href="css/navBar2Pages/page3.css" rel="stylesheet"/>
+
+    <script src="scripts/navBar2/page3/script.js"></script>
 
 </head>
 <body>
@@ -44,10 +45,8 @@
         </div>
         <div class="tool_user_info">
             <div class="user_name" id="user_name">{{AuthUser.name}} {{AuthUser.last_name}}</div>
-            <div class="org">{{role}}</div>
-            <div class="project_id" id="project_id" hidden>0</div>
-            <div class="shop_id" id="shop_id" hidden>0</div>
-            <div class="name_with_ord" id="name_with_ord" hidden>0</div>
+            <div id="user_role" class="org">{{role}}</div>
+            <div id="user_id" hidden>{{AuthUser.id}}</div>
         </div>
         <div class="tool_btn_log_out">
             <a rel="nofollow" data-method="post" href="/logout">
@@ -160,7 +159,7 @@
                     <td class="column5">{{#document.name_file}}{{document.name_file}}{{/document.name_file}}</td>
                     <td class="column6"> </td>
                     <td class="column7">
-                        <a href="#" style="text-decoration: none">
+                        <a href="/getFileInTask?task_id={{#id}}{{id}}{{/id}}" style="text-decoration: none">
                             <div class="btn_see_file_in_task">
                                 <div class="text_see_file_in_task">Открыть файл</div>
                             </div>
@@ -168,19 +167,19 @@
                     </td>
                     <td class="column8">
                         {{#send_to_user1}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user1}}checked{{/status_user1}}>
+                            <input type="checkbox" id="check{{#id}}{{id}}{{/id}}" name="scales" class="check_box" onclick="clickCheckBox(0,{{id}})" {{#status_user1}}disabled{{/status_user1}} {{#status_user1}}checked{{/status_user1}}>
                         {{/send_to_user1}}
                         {{#send_to_user2}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user2}}checked{{/status_user2}}>
+                            <input type="checkbox" id="check{{#id}}{{id}}{{/id}}" name="scales" class="check_box" onclick="clickCheckBox(1,{{id}})" {{#status_user2}}disabled{{/status_user2}} {{#status_user2}}checked{{/status_user2}}>
                         {{/send_to_user2}}
                         {{#send_to_user3}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user3}}checked{{/status_user3}}>
+                            <input type="checkbox" id="check{{#id}}{{id}}{{/id}}" name="scales" class="check_box" onclick="clickCheckBox(2,{{id}})" {{#status_user3}}disabled{{/status_user3}} {{#status_user3}}checked{{/status_user3}}>
                         {{/send_to_user3}}
                         {{#send_to_user4}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user4}}checked{{/status_user4}}>
+                            <input type="checkbox" id="check{{#id}}{{id}}{{/id}}" name="scales" class="check_box" onclick="clickCheckBox(3,{{id}})" {{#status_user4}}disabled{{/status_user4}} {{#status_user4}}checked{{/status_user4}}>
                         {{/send_to_user4}}
                         {{#send_to_user5}}
-                            <input type="checkbox" id="scales" name="scales" class="check_box" {{#status_user5}}checked{{/status_user5}}>
+                            <input type="checkbox" id="check{{#id}}{{id}}{{/id}}" name="scales" class="check_box" onclick="clickCheckBox(4,{{id}})" {{#status_user5}}disabled{{/status_user5}} {{#status_user5}}checked{{/status_user5}}>
                         {{/send_to_user5}}
                     </td>
                 </tr>

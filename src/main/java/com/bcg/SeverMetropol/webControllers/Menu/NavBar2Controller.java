@@ -31,15 +31,4 @@ public class NavBar2Controller {
         return "Menu/NavBar2/menu_nav2_1";
     }
 
-    @GetMapping("/navbar2-2")
-    public String navBar2page2(Map<String, Object> model, Authentication authentication){
-
-        User user = userRepo.findByLogin(authentication.getName());
-        Photo photo = photoRepo.findUserPhoto(user.getId());
-
-        model.putAll(ToolBarUserInfo.getUserMap(user,photo));
-
-        return "Menu/NavBar2/menu_nav2_2";
-    }
-
 }

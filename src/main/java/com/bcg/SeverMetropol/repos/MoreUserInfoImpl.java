@@ -20,8 +20,6 @@ public class MoreUserInfoImpl implements MoreUserInfoRepo {
         jdbcTemplate.update(sql, moreUserInfo.getId(), moreUserInfo.getUser_id(), moreUserInfo.getBirthday(), moreUserInfo.getPhone(), moreUserInfo.getAll_info());
     }
 
-
-
     @Override
     public void update(MoreUserInfo moreUserInfo) {
         String sql ="UPDATE more_user_info SET date_birthday=?,phone=?,all_info=? WHERE user_id=?";
@@ -37,6 +35,10 @@ public class MoreUserInfoImpl implements MoreUserInfoRepo {
     @Override
     public int findLastId() {
         String sql = "SELECT MAX(id) FROM more_user_info";
-        return jdbcTemplate.queryForObject(sql,Integer.class);
+        if (jdbcTemplate.queryForObject(sql,Integer.class)==null){
+            return 0;
+        }else{
+            return jdbcTemplate.queryForObject(sql,Integer.class);
+        }
     }
 }

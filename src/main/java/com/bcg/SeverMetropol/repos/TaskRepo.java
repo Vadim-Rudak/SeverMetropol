@@ -1,11 +1,14 @@
 package com.bcg.SeverMetropol.repos;
 
+import com.bcg.SeverMetropol.domain.task.Task;
 import com.bcg.SeverMetropol.domain.task.TaskOrder;
 
 import java.util.List;
 
 public interface TaskRepo {
-    void saveOrdTask(TaskOrder taskOrder);
+
+    void save(Task task);
+
     int findLastId();
 
     void upDateTask(TaskOrder taskOrder);

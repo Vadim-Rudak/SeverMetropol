@@ -1,6 +1,6 @@
 package com.bcg.SeverMetropol.repos;
 
-import com.bcg.SeverMetropol.domain.task.TaskOrder;
+import com.bcg.SeverMetropol.domain.task.*;
 import com.bcg.SeverMetropol.maper.task.orderTaskMaper;
 import com.bcg.SeverMetropol.maper.task.taskForMeMaper;
 import com.bcg.SeverMetropol.maper.task.taskMaper;
@@ -20,16 +20,34 @@ public class TaskImpl implements TaskRepo{
     }
 
     @Override
-    public void saveOrdTask(TaskOrder taskOrder) {
-        String sql = "INSERT INTO table_task (id, user_id, name_task, status, more_info,date_add,time_add, use_order, use_default) VALUES (?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, taskOrder.getId(), taskOrder.getUser_id(), taskOrder.getName_task(), taskOrder.getStatus(),
-                taskOrder.getMore_info(), taskOrder.getDate_add(), taskOrder.getTime_add(), taskOrder.isUse_order(), taskOrder.isUse_default());
-        String sql2 = "INSERT INTO table_task_user (id_task, send_to_user1, send_to_user2, send_to_user3, send_to_user4, send_to_user5," +
-                "status_user1, status_user2, status_user3, status_user4, status_user5) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql2, taskOrder.getId(), taskOrder.isSend_to_user1(), taskOrder.isSend_to_user2(), taskOrder.isSend_to_user3(),
-                taskOrder.isSend_to_user4(),taskOrder.isSend_to_user5(), taskOrder.isStatus_user1(), taskOrder.isStatus_user2(),
-                taskOrder.isStatus_user3(), taskOrder.isStatus_user4(), taskOrder.isStatus_user5());
+    public void save(Task task) {
 
+        String sql = "INSERT INTO table_task (id, user_id, name_task, status, more_info,date_add,time_add,use_it,use_repair,use_order,use_product,use_transport) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, task.getId(), task.getUser_id(), task.getName_task(), task.getStatus(),
+                task.getMore_info(), task.getDate_add(), task.getTime_add(), task.isUse_it(), task.isUse_repair(), task.isUse_order(), task.isUse_product(), task.isUse_transport());
+
+        if (task instanceof TaskIT){
+            System.out.println("Сохранение заявки IT");
+
+        }else if(task instanceof TaskRepair){
+            System.out.println("Сохранение заявки ремонтной службы");
+
+        }else if(task instanceof TaskOrder){
+            System.out.println("Сохранение заявки концелярии");
+            TaskOrder taskOrder = (TaskOrder) task;
+            String sql2 = "INSERT INTO table_task_user (id_task, send_to_user1, send_to_user2, send_to_user3, send_to_user4, send_to_user5," +
+                    "status_user1, status_user2, status_user3, status_user4, status_user5) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            jdbcTemplate.update(sql2, taskOrder.getId(), taskOrder.isSend_to_user1(), taskOrder.isSend_to_user2(), taskOrder.isSend_to_user3(),
+                    taskOrder.isSend_to_user4(),taskOrder.isSend_to_user5(), taskOrder.isStatus_user1(), taskOrder.isStatus_user2(),
+                    taskOrder.isStatus_user3(), taskOrder.isStatus_user4(), taskOrder.isStatus_user5());
+
+        }else if(task instanceof TaskProduct){
+            System.out.println("Сохранение заявки продукции");
+
+        }else if (task instanceof TaskTransport){
+            System.out.println("Сохранение заявки корп. транспорта");
+
+        }
     }
 
     @Override

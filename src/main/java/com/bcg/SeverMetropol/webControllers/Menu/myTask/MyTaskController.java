@@ -5,8 +5,7 @@ import com.bcg.SeverMetropol.constants.Constans;
 import com.bcg.SeverMetropol.domain.History;
 import com.bcg.SeverMetropol.domain.Photo;
 import com.bcg.SeverMetropol.domain.User;
-import com.bcg.SeverMetropol.domain.task.Document;
-import com.bcg.SeverMetropol.domain.task.TaskOrder;
+import com.bcg.SeverMetropol.domain.task.*;
 import com.bcg.SeverMetropol.repos.DocumentRepo;
 import com.bcg.SeverMetropol.repos.PhotoRepo;
 import com.bcg.SeverMetropol.repos.TaskRepo;
@@ -65,18 +64,12 @@ public class MyTaskController {
         return "Menu/NavBar2/menu_nav2_4";
     }
 
-
-    @RequestMapping("/addNewOrderTask")
-    public String addNewOrderTask(TaskOrder taskOrder, @RequestParam(name="doc_file", required=false, defaultValue="null") MultipartFile doc_file) throws IOException {
+    @RequestMapping("/addNewItTask")
+    public String addNewItTask(TaskIT taskIT, @RequestParam(name="doc_file", required=false, defaultValue="null") MultipartFile doc_file) throws IOException {
 
         int last_id = taskRepo.findLastId() + 1;
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
-        LocalDateTime now = LocalDateTime.now();
-        taskOrder.setId(last_id);
-        taskOrder.setDate_add(dateFormat.format(now));
-        taskOrder.setTime_add(timeFormat.format(now));
-        taskRepo.saveOrdTask(taskOrder);
+        taskIT.setId(last_id);
+        taskRepo.save(taskIT);
 
         if (!doc_file.isEmpty()){
             Document document = new Document();
@@ -92,7 +85,94 @@ public class MyTaskController {
         return "redirect:/navbar2-4";
     }
 
-    public static String encodeString(byte[] bytes){
+    @RequestMapping("/addNewRepairTask")
+    public String addNewRepairTask(TaskRepair taskRepair, @RequestParam(name="doc_file", required=false, defaultValue="null") MultipartFile doc_file) throws IOException {
+
+        int last_id = taskRepo.findLastId() + 1;
+        taskRepair.setId(last_id);
+        taskRepo.save(taskRepair);
+
+        if (!doc_file.isEmpty()){
+            Document document = new Document();
+            document.setTask_id(last_id);
+            document.setName_file(doc_file.getOriginalFilename());
+            document.setType_file(doc_file.getContentType());
+            document.setRes(encodeString(doc_file.getBytes()));
+            documentRepo.save(document);
+        }
+
+        historyService.save(new History(last_id, Constans.HISTORY_ADD));
+
+        return "redirect:/navbar2-4";
+    }
+
+
+    @RequestMapping("/addNewOrderTask")
+    public String addNewOrderTask(TaskOrder taskOrder, @RequestParam(name="doc_file", required=false, defaultValue="null") MultipartFile doc_file) throws IOException {
+
+        int last_id = taskRepo.findLastId() + 1;
+        taskOrder.setId(last_id);
+        taskRepo.save(taskOrder);
+
+        if (!doc_file.isEmpty()){
+            Document document = new Document();
+            document.setTask_id(last_id);
+            document.setName_file(doc_file.getOriginalFilename());
+            document.setType_file(doc_file.getContentType());
+            document.setRes(encodeString(doc_file.getBytes()));
+            documentRepo.save(document);
+        }
+
+        historyService.save(new History(last_id, Constans.HISTORY_ADD));
+
+        return "redirect:/navbar2-4";
+    }
+
+    @RequestMapping("/addNewProductTask")
+    public String addNewProductTask(TaskProduct taskProduct, @RequestParam(name="doc_file", required=false, defaultValue="null") MultipartFile doc_file) throws IOException {
+
+        int last_id = taskRepo.findLastId() + 1;
+        taskProduct.setId(last_id);
+        taskRepo.save(taskProduct);
+
+        if (!doc_file.isEmpty()){
+            Document document = new Document();
+            document.setTask_id(last_id);
+            document.setName_file(doc_file.getOriginalFilename());
+            document.setType_file(doc_file.getContentType());
+            document.setRes(encodeString(doc_file.getBytes()));
+            documentRepo.save(document);
+        }
+
+        historyService.save(new History(last_id, Constans.HISTORY_ADD));
+
+        return "redirect:/navbar2-4";
+    }
+
+    @RequestMapping("/addNewTransportTask")
+    public String addNewTransportTask(TaskTransport taskTransport, @RequestParam(name="doc_file", required=false, defaultValue="null") MultipartFile doc_file) throws IOException {
+
+        int last_id = taskRepo.findLastId() + 1;
+        taskTransport.setId(last_id);
+        taskRepo.save(taskTransport);
+
+        if (!doc_file.isEmpty()){
+            Document document = new Document();
+            document.setTask_id(last_id);
+            document.setName_file(doc_file.getOriginalFilename());
+            document.setType_file(doc_file.getContentType());
+            document.setRes(encodeString(doc_file.getBytes()));
+            documentRepo.save(document);
+        }
+
+        historyService.save(new History(last_id, Constans.HISTORY_ADD));
+
+        return "redirect:/navbar2-4";
+    }
+
+
+
+    public String encodeString(byte[] bytes){
         return Base64.getEncoder().encodeToString(bytes);
     }
 

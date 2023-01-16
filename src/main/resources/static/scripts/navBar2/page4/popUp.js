@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 
     PopUpHideHistory();
@@ -62,7 +61,6 @@ function useCalendar() {
     }
 }
 
-
 function PopUpHideHistory(){
     $("#popUpHistory").hide();
 }
@@ -99,62 +97,58 @@ function getListHistory(task_id) {
     }
 }
 
-function addItTask() {
+function openPageAddTask(classificationTask) {
+
     var form_send_task = document.getElementById("form_to_post_task");
-    form_send_task.action = "/addNewItTask"
-
     var list_my_all_tasks = document.getElementById("list_my_all_tasks");
-    list_my_all_tasks.style.display = "none"
-
     var calendar = document.getElementById("id_full_calendar");
-    calendar.style.display = "none"
-
     var btn_or_in_tasks = document.getElementById("id_btn_or_in_tasks");
-    btn_or_in_tasks.style.display = "none"
-
     var add_new_task = document.getElementById("add_new_task");
-    add_new_task.style.display = "flex"
-
-    var block_small_task = document.getElementById("block_small_task")
-    block_small_task.style.display = "block"
-
-    var add_users_in_task = document.getElementById("block_add_users")
-    add_users_in_task.style.display = "none"
-
     var search = document.getElementById("id_search");
-    search.style.display = "none"
-
     var filters = document.getElementById("id_filters");
-    filters.style.display = "none"
-}
+    var block_small_task = document.getElementById("block_small_task")
+    var add_users_in_task = document.getElementById("block_add_users")
 
-function addOrderTask() {
-    var form_send_task = document.getElementById("form_to_post_task");
-    form_send_task.action = "/addNewOrderTask"
 
-    var list_my_all_tasks = document.getElementById("list_my_all_tasks");
     list_my_all_tasks.style.display = "none"
-
-    var calendar = document.getElementById("id_full_calendar");
     calendar.style.display = "none"
-
-    var btn_or_in_tasks = document.getElementById("id_btn_or_in_tasks");
     btn_or_in_tasks.style.display = "none"
-
-    var add_new_task = document.getElementById("add_new_task");
     add_new_task.style.display = "flex"
-
-    var block_small_task = document.getElementById("block_small_task")
-    block_small_task.style.display = "none"
-
-    var add_users_in_task = document.getElementById("block_add_users")
-    add_users_in_task.style.display = "block"
-
-    var search = document.getElementById("id_search");
     search.style.display = "none"
-
-    var filters = document.getElementById("id_filters");
     filters.style.display = "none"
+
+    switch (classificationTask){
+        case "TaskIT":{
+            form_send_task.action = "/addNewItTask"
+            block_small_task.style.display = "block"
+            add_users_in_task.style.display = "none"
+            break;
+        }
+        case "TaskRepair":{
+            form_send_task.action = "/addNewRepairTask"
+            block_small_task.style.display = "block"
+            add_users_in_task.style.display = "none"
+            break;
+        }
+        case "TaskOrder":{
+            form_send_task.action = "/addNewOrderTask"
+            block_small_task.style.display = "none"
+            add_users_in_task.style.display = "block"
+            break;
+        }
+        case "TaskProduct":{
+            form_send_task.action = "/addNewProductTask"
+            block_small_task.style.display = "none"
+            add_users_in_task.style.display = "block"
+            break;
+        }
+        case "TaskTransport":{
+            form_send_task.action = "/addNewTransportTask"
+            block_small_task.style.display = "none"
+            add_users_in_task.style.display = "block"
+            break;
+        }
+    }
 }
 
 function PopUpHideAddSmallTask(){
@@ -163,8 +157,4 @@ function PopUpHideAddSmallTask(){
 
 function PopUpShowAddSmallTask(){
     $("#popUpAddSmallTask").show();
-}
-
-function add() {
-    
 }

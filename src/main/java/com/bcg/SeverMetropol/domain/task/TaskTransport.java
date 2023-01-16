@@ -1,11 +1,13 @@
 package com.bcg.SeverMetropol.domain.task;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
-public class TaskOrder extends Task{
+public class TaskTransport extends Task{
 
     private int id_task;
     private boolean send_to_user1;
@@ -18,8 +20,9 @@ public class TaskOrder extends Task{
     private boolean status_user4;
     private boolean send_to_user5;
     private boolean status_user5;
-    public TaskOrder(){
-        use_order = true;
+
+    TaskTransport(){
+        use_transport = true;
     }
 
 }

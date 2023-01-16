@@ -14,6 +14,7 @@ public class TaskOrder extends Task{
     private boolean status_user2;
     private boolean send_to_user3;
     private boolean status_user3;
+
     private boolean send_to_user4;
     private boolean status_user4;
     private boolean send_to_user5;

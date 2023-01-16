@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,8 @@ public class MyTaskController {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
         model.put("date_now",dateFormat.format(now));
+
+        model.put("list_users",userRepo.findAllUsers());
 
         return "Menu/NavBar2/menu_nav2_4";
     }

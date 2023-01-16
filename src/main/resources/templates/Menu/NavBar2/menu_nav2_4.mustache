@@ -13,6 +13,7 @@
     <link type="text/css" href="css/navBar2Pages/page4.css" rel="stylesheet"/>
 
     <script src="scripts/navBar2/page4/popUp.js"></script>
+    <script src="scripts/navBar2/page4/page4.js"></script>
 
 
 <!--    ADD FUL CALENDAR-->
@@ -295,6 +296,12 @@
                     </div>
                     <input type="file" name="doc_file" id="document"/>
                 </label>
+<!--                <div>-->
+<!--                    <div style="margin-top: 5px">-->
+<!--                        <input type="checkbox" onclick="clickBox3()" id="checkbox_user_work" name="send_to_user1">-->
+<!--                        <label for="scales">Добавить пользователя которому будет отправлена заявка</label>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
             <div class="from_add_small_task" id="block_small_task">
                 <div style="display: flex;justify-content: space-between;align-items: center">
@@ -329,8 +336,33 @@
                         <label for="scales">Юрист</label>
                     </div>
                     <div style="margin-top: 5px">
-                        <input type="checkbox" id="scales" name="send_to_user1">
+                        <input name="id_user_to_send" id="id_user_send2" hidden>
+                        <input type="checkbox" onclick="clickBox3()" id="checkbox_user_work" name="send_to_user1">
                         <label for="scales">Исполнитель</label>
+                    </div>
+                    <script>
+                        var ddData = [
+                            {
+                                text: "Значение по умолчанию",
+                                value: 0,
+                                description: " "
+                            }
+                            {{#list_users}}
+                                ,{
+                                    text: "{{#last_name}}{{last_name}}{{/last_name}} {{#name}}{{name}}{{/name}} {{#patronymic}}{{patronymic}}{{/patronymic}}",
+                                    value: {{#id}}{{id}}{{/id}},
+                                    description: "Роль:{{#role}}{{role}}{{/role}} ",
+                                    imageSrc: "https://i.imgur.com/XkuTj3B.png"
+                                }
+                            {{/list_users}}
+
+                        ];
+                    </script>
+                    <div class="block_add_user" id="block_user_select">
+                        <div class="text_up_input">Выберите исполнителя</div>
+                        <div>
+                            <select name="" id="select_user"></select>
+                        </div>
                     </div>
                     <div style="margin-top: 5px">
                         <input type="checkbox" id="scales" name="send_to_user3">
@@ -463,6 +495,8 @@
         </div>
     </div>
 </div>
+
+<script src="scripts/navBar2/page4/selectUser.js"></script>
 
 
 </body>

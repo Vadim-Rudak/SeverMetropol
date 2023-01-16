@@ -877,3 +877,9 @@
 #calendar{
     height: -webkit-fill-available;
 }
+
+
+/* In task to add */
+.block_add_user{
+    display: none;
+}

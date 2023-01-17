@@ -8,12 +8,12 @@ import com.bcg.SeverMetropol.repos.PhotoRepo;
 import com.bcg.SeverMetropol.repos.UserRepo;
 import com.bcg.SeverMetropol.webControllers.Menu.ToolBarUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Base64;
@@ -149,6 +149,18 @@ public class UsersController {
 
         return "redirect:/UserProfile?id=" + user.getId();
     }
+
+    @RequestMapping(value = "/getUserPhoto", method = RequestMethod.GET)
+    public ResponseEntity<?> getImage(@RequestParam(name="user_id", required=false, defaultValue="0") int user_id) {
+        if(user_id!=0&&photoRepo.findUserPhoto(user_id)!=null){
+            return ResponseEntity.ok()
+                    .contentType(MediaType.IMAGE_JPEG)
+                    .body(Base64.getMimeDecoder().decode(photoRepo.findUserPhoto(user_id).getRes()));
+        }else{
+            return null;
+        }
+    }
+
 
 
 

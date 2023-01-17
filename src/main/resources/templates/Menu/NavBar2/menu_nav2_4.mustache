@@ -296,6 +296,11 @@
                     </div>
                     <input type="file" name="doc_file" id="document"/>
                 </label>
+                <div class="btn_add_users">
+                    <a href="javascript:openWindowAddUsersToSendShow()" class="href_btn_add_user">
+                        <div class="text_in_btn_add_file">Отправить следующим сотрудникам</div>
+                    </a>
+                </div>
 <!--                <div>-->
 <!--                    <div style="margin-top: 5px">-->
 <!--                        <input type="checkbox" onclick="clickBox3()" id="checkbox_user_work" name="send_to_user1">-->
@@ -452,6 +457,55 @@
 
 </div>
 
+<div class="b-popup-users" id="popUpUsers">
+    <div class="b-popup-content-users">
+        <div class="titel_block">
+            <div class="text_titel_hist">Отправить пользователям</div>
+            <div class="block_cl">
+                <a href="javascript:openWindowAddUsersToSendHide()" style="text-decoration: none"><img src="images/ic_cl_btn.svg" width="20px" height="20px" /></a>
+            </div>
+        </div>
+        <div class="block_list_users" id="users_list">
+            {{#list_users}}
+                <div class="item_user">
+                    <input value="{{#id}}{{id}}{{/id}}" hidden>
+                    <div class="user_info_in_list">
+                        <div class="user_photo_in_list">
+                            {{#photo.res}}
+                                <img src="/getUserPhoto?user_id={{id}}" class="img_user_in_list">
+                            {{/photo.res}}
+                            {{^photo.res}}
+
+                                <div class="user_no_photo_in_list">
+                                    <div class="char_in_img" id="char_in_img">N</div>
+                                </div>
+                            {{/photo.res}}
+                        </div>
+                        <div class="block_fio">
+                            <div class="item_text_fio">{{#last_name}}{{last_name}}{{/last_name}} {{#name}}{{name}}{{/name}} {{#patronymic}}{{patronymic}}{{/patronymic}}</div>
+                            <div class="item_user_role">{{#role}}{{role}}{{/role}}</div>
+                        </div>
+                    </div>
+                    <div class="btn_add_user">
+                        <div class="btn_select_user" id="btn_select_user_{{#id}}{{id}}{{/id}}">
+                            <a href="javascript:addUserInTask({{#id}}{{id}}{{/id}})" style="text-decoration: none">
+                                <img src="images/ic_done.svg" width="20px" height="20px" />
+                            </a>
+                        </div>
+                        <div class="btn_cansel_user" id="btn_cansel_user_{{#id}}{{id}}{{/id}}">
+                            <a href="javascript:deleteUserInTask({{#id}}{{id}}{{/id}})" style="text-decoration: none">
+                                <img src="images/ic_cl_btn.svg" width="20px" height="20px" />
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="line_in_list"></div>
+            {{/list_users}}
+        </div>
+
+    </div>
+</div>
 
 <div class="b-popup" id="popUpHistory">
     <div class="b-popup-content">

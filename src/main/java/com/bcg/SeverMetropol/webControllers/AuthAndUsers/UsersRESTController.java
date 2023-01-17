@@ -22,7 +22,7 @@ public class UsersRESTController {
 
     @GetMapping(value = "/allUsersInJSON", produces = MediaType.APPLICATION_JSON_VALUE)
     public Object getAllUsersInJSON() {
-        return userRepo.findAllUsers();
+        return userRepo.findAllUsersWithMoreInfo();
     }
 
 }

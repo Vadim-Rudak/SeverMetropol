@@ -17,5 +17,6 @@ public interface UserRepo {
     List<User> findAllUsersWithMoreInfo();
     User findMoreUserInfoById(int user_id);
 
+
     List<User> searchMoreUserInfoByFIO(String fio);
 }

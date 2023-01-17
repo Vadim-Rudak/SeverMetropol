@@ -100,6 +100,121 @@
 }
 
 
+/* POPUP ADD USERS */
+.b-popup-users{
+    z-index: 4;
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.b-popup-users .b-popup-content-users{
+    width:500px;
+    height: 700px;
+    background-color: #ffffff;
+    border-radius:6px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.72);
+    display: block;
+
+}
+
+.block_list_users{
+    margin: 20px;
+    height: 100%;
+}
+
+.item_user{
+    margin-top: 2px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 75px;
+}
+
+.line_in_list{
+    width: 100%;
+    height: 2px;
+    background-color: rgba(93, 110, 228, 0.07);
+}
+
+.user_info_in_list{
+    display: flex;
+}
+
+.user_photo_in_list{
+    margin-left: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.user_no_photo_in_list{
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    background-color: #C2C0E8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_user_in_list{
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    object-fit: cover
+}
+
+.block_fio{
+    margin-left: 8px;
+}
+
+.item_text_fio{
+    padding-top: 8px;
+    color: #272727;
+    /* Body 14\20 */
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    letter-spacing: 0.01em;
+}
+
+.item_user_role{
+    font-family: Inter;
+    color: #636363;
+    font-size: 12px;
+}
+
+.btn_add_user{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.btn_select_user{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.btn_cansel_user{
+    margin-top: auto;
+    margin-bottom: auto;
+    display: none;
+}
+
+
+
+
+
 
 /* History */
 .b-container{
@@ -743,6 +858,24 @@
 
 
 
+
+.btn_add_users{
+    width: 100%;
+    height: 32px;
+    background-color: rgba(78, 115, 223, 0.07);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.href_btn_add_user{
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 

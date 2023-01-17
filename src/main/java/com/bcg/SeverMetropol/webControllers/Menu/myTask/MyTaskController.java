@@ -62,7 +62,7 @@ public class MyTaskController {
         LocalDateTime now = LocalDateTime.now();
         model.put("date_now",dateFormat.format(now));
 
-        model.put("list_users",userRepo.findAllUsers());
+        model.put("list_users",userRepo.findAllUsersWithMoreInfo());
 
         return "Menu/NavBar2/menu_nav2_4";
     }

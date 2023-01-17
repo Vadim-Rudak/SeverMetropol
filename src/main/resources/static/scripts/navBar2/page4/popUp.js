@@ -158,3 +158,13 @@ function PopUpHideAddSmallTask(){
 function PopUpShowAddSmallTask(){
     $("#popUpAddSmallTask").show();
 }
+
+function openWindowAddUsersToSendShow(){
+    var popUpAddUsers = document.getElementById("popUpUsers")
+    popUpAddUsers.style.display = "flex"
+}
+
+function openWindowAddUsersToSendHide(){
+    var popUpAddUsers = document.getElementById("popUpUsers")
+    popUpAddUsers.style.display = "none"
+}

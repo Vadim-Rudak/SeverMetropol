@@ -25,6 +25,7 @@ public class Task {
     protected boolean use_order;
     protected boolean use_product;
     protected boolean use_transport;
+    private String users_array;
     private Document document;
 
     public Task() {

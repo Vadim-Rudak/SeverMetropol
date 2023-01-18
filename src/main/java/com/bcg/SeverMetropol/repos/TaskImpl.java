@@ -22,9 +22,9 @@ public class TaskImpl implements TaskRepo{
     @Override
     public void save(Task task) {
 
-        String sql = "INSERT INTO table_task (id, user_id, name_task, status, more_info,date_add,time_add,use_it,use_repair,use_order,use_product,use_transport) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO table_task (id, user_id, name_task, status, more_info,date_add,time_add,use_it,use_repair,use_order,use_product,use_transport,users_array) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql, task.getId(), task.getUser_id(), task.getName_task(), task.getStatus(),
-                task.getMore_info(), task.getDate_add(), task.getTime_add(), task.isUse_it(), task.isUse_repair(), task.isUse_order(), task.isUse_product(), task.isUse_transport());
+                task.getMore_info(), task.getDate_add(), task.getTime_add(), task.isUse_it(), task.isUse_repair(), task.isUse_order(), task.isUse_product(), task.isUse_transport(), task.getUsers_array());
 
         if (task instanceof TaskIT){
             System.out.println("Сохранение заявки IT");

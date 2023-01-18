@@ -11,7 +11,6 @@ function clickBox3(){
     }else{
         block_user_select.style.display = "none"
     }
-
 }
 
 function addUserInTask(user_id) {
@@ -34,5 +33,13 @@ function deleteUserInTask(user_id) {
 
     list_add_users.delete(user_id)
     console.log(list_add_users.size)
+}
+
+function addUsersInArray(){
+    var list_users = document.getElementById("list_users")
+    var popUpAddUsers = document.getElementById("popUpUsers")
+
+    list_users.value = [...list_add_users.keys()]
+    popUpAddUsers.style.display = "none"
 }
 

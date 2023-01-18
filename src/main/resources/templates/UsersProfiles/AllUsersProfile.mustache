@@ -100,10 +100,10 @@
         </tr>
         {{#listUsers}}
             <tr class="row_with_info">
-                <td class="column1">{{id}}</td>
-                <td class="column2">{{last_name}} {{name}} {{#patronymic}}{{patronymic}}{{/patronymic}}</td>
-                <td class="column3">{{role}}</td>
-                <td class="column4">{{moreUserInfo.birthday}}</td>
+                <td class="column1">{{#id}}{{id}}{{/id}}</td>
+                <td class="column2">{{#last_name}}{{last_name}}{{/last_name}} {{#name}}{{name}}{{/name}} {{#patronymic}}{{patronymic}}{{/patronymic}}</td>
+                <td class="column3">{{#role}}{{role}}{{/role}}</td>
+                <td class="column4">{{#moreUserInfo.birthday}}{{moreUserInfo.birthday}}{{/moreUserInfo.birthday}}</td>
                 <td class="column5"> </td>
                 <td class="column6">
                     <a href="/UserProfile?id={{id}}" style="text-decoration: none">

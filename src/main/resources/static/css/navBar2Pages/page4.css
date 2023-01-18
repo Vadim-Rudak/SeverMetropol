@@ -125,7 +125,7 @@
 
 .block_list_users{
     margin: 20px;
-    height: 100%;
+    height: 530px;
 }
 
 .item_user{
@@ -147,7 +147,6 @@
 }
 
 .user_photo_in_list{
-    margin-left: 16px;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -209,6 +208,41 @@
     margin-top: auto;
     margin-bottom: auto;
     display: none;
+}
+
+.block_with_btn_add_users{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_add_users_in_task{
+    margin-top: 5px;
+    height: 30px;
+    width: fit-content;
+    background-color: #5d6ee4;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text_btn_add_users{
+    margin-left: 20px;
+    margin-right: 20px;
+    /* Body 14\20 */
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    letter-spacing: 0.01em;
+    color: #ffffff;
 }
 
 

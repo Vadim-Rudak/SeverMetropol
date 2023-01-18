@@ -70,6 +70,7 @@ public class MyTaskController {
     @RequestMapping("/addNewItTask")
     public String addNewItTask(TaskIT taskIT, @RequestParam(name="doc_file", required=false, defaultValue="null") MultipartFile doc_file) throws IOException {
 
+        System.out.println("list->" + taskIT.getUsers_array());
         int last_id = taskRepo.findLastId() + 1;
         taskIT.setId(last_id);
         taskRepo.save(taskIT);

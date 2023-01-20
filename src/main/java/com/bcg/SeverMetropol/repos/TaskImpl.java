@@ -79,7 +79,7 @@ public class TaskImpl implements TaskRepo{
     }
 
     @Override
-    public List<TaskOrder> getAllOneUser(int user_id) {
+    public List<TaskOrder> getAllToSend(int user_id) {
         String sql = " select t1.id,t1.name_task,t1.date_add, t1.time_add, t1.status,ttu.*,ttf.name_file from table_task as t1 " +
                 " left join table_task_user ttu on t1.id = ttu.id_task " +
                 " left join table_task_files ttf on t1.id = ttf.task_id WHERE t1.user_id=? " + " ORDER BY t1.id DESC ";
@@ -87,7 +87,7 @@ public class TaskImpl implements TaskRepo{
     }
 
     @Override
-    public List<TaskOrder> getAllTasksForMe(String user_role) {
+    public List<TaskOrder> getAllTasksForMe(String user_role,int user_id) {
         String use_column;
         String column_status_check;
         boolean use_role = true;
@@ -115,9 +115,9 @@ public class TaskImpl implements TaskRepo{
                 column_status_check = "status_user1";
             }
         }
-        String sql = " select t1.id,t1.name_task,t1.date_add, t1.time_add, t1.status,ttu." + use_column + ",ttu." + column_status_check + ",ttf.name_file from table_task as t1 " +
+        String sql = " select t1.id,t1.name_task,t1.date_add, t1.time_add, t1.status,t1.users_array,ttu." + use_column + ",ttu." + column_status_check + ",ttf.name_file from table_task as t1 " +
                 " left join table_task_user ttu on t1.id = ttu.id_task " +
-                " left join table_task_files ttf on t1.id = ttf.task_id WHERE ttu." + use_column + " = true";
+                " left join table_task_files ttf on t1.id = ttf.task_id WHERE ttu." + use_column + " = true or t1.users_array LIKE '%" + user_id + "%'";
 
         if(use_role){
             list_all_tasks = jdbcTemplate.query(sql, new taskForMeMaper());
@@ -127,5 +127,4 @@ public class TaskImpl implements TaskRepo{
 
         return list_all_tasks;
     }
-
 }

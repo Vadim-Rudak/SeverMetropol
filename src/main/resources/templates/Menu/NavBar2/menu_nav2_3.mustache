@@ -159,11 +159,13 @@
                     <td class="column5">{{#document.name_file}}{{document.name_file}}{{/document.name_file}}</td>
                     <td class="column6"> </td>
                     <td class="column7">
-                        <a href="/getFileInTask?task_id={{#id}}{{id}}{{/id}}" style="text-decoration: none">
+                        {{#document.name_file}}
+                            <a href="/getFileInTask?task_id={{#id}}{{id}}{{/id}}" style="text-decoration: none">
                             <div class="btn_see_file_in_task">
                                 <div class="text_see_file_in_task">Открыть файл</div>
                             </div>
-                        </a>
+                            </a>
+                        {{/document.name_file}}
                     </td>
                     <td class="column8">
                         {{#send_to_user1}}

@@ -55,7 +55,7 @@ public class MyTaskController {
 
         model.putAll(ToolBarUserInfo.getUserMap(user,photo));
 
-        List<TaskOrder> list_my_task = taskRepo.getAllOneUser(user.getId());
+        List<TaskOrder> list_my_task = taskRepo.getAllToSend(user.getId());
         model.put("MyTasks",list_my_task);
 
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");

@@ -26,6 +26,7 @@ public class Task {
     protected boolean use_product;
     protected boolean use_transport;
     private String users_array;
+    private boolean send_only_select_users;
     private Document document;
 
     public Task() {

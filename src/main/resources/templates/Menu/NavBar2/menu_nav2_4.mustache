@@ -297,10 +297,18 @@
                     <input type="file" name="doc_file" id="document"/>
                 </label>
                 <input value="" id="list_users" name="users_array" hidden>
-                <div class="btn_add_users">
+                <div class="btn_add_users" id="id_btn_add_users">
                     <a href="javascript:openWindowAddUsersToSendShow()" class="href_btn_add_user">
                         <div class="text_in_btn_add_file">Отправить следующим сотрудникам</div>
                     </a>
+                </div>
+                <div class="info_add_users" id="id_info_add_users">
+                    <div class="text_select_users" id="text_users_to_send">text</div>
+                    <div>
+                        <a href="javascript:openWindowAddUsersToSendShow()" style="text-decoration: none">
+                            <img src="images/ic_edit.svg" width="26px" height="26px" style="margin-right: 8px" />
+                        </a>
+                    </div>
                 </div>
 <!--                <div>-->
 <!--                    <div style="margin-top: 5px">-->

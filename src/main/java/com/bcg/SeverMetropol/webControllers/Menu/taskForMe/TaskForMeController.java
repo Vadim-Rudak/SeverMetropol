@@ -6,7 +6,10 @@ import com.bcg.SeverMetropol.domain.Photo;
 import com.bcg.SeverMetropol.domain.User;
 import com.bcg.SeverMetropol.domain.task.Document;
 import com.bcg.SeverMetropol.domain.task.TaskOrder;
-import com.bcg.SeverMetropol.repos.*;
+import com.bcg.SeverMetropol.repos.DocumentRepo;
+import com.bcg.SeverMetropol.repos.PhotoRepo;
+import com.bcg.SeverMetropol.repos.TaskRepo;
+import com.bcg.SeverMetropol.repos.UserRepo;
 import com.bcg.SeverMetropol.service.HistoryService;
 import com.bcg.SeverMetropol.webControllers.Menu.ToolBarUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +20,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +49,7 @@ public class TaskForMeController {
         Photo photo = photoRepo.findUserPhoto(user.getId());
 
         model.putAll(ToolBarUserInfo.getUserMap(user,photo));
-        model.put("listTaskForMe",taskRepo.getAllTasksForMe(user.getRole()));
+        model.put("listTaskForMe",taskRepo.getAllTasksForMe(user.getRole(), user.getId()));
 
         return "Menu/NavBar2/menu_nav2_3";
     }

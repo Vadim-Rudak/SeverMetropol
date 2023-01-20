@@ -224,11 +224,13 @@
     <div class="list_news_block_titel">
         <div class="news_titel">Лента новостей</div>
         <div>
-            <a href="javascript:PopUpShowAddNews()" style="text-decoration: none">
-                <div class="btn_add_news">
-                    <div class="text_btn_add_news">Добавить новость</div>
-                </div>
-            </a>
+            {{#visible_btn_add_news}}
+                <a href="javascript:PopUpShowAddNews()" style="text-decoration: none">
+                    <div class="btn_add_news">
+                        <div class="text_btn_add_news">Добавить новость</div>
+                    </div>
+                </a>
+            {{/visible_btn_add_news}}
         </div>
     </div>
     <div class="list_all_news" id="id_list_all_news">

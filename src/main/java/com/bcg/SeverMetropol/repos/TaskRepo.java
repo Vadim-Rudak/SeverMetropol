@@ -14,7 +14,7 @@ public interface TaskRepo {
     void upDateTask(TaskOrder taskOrder);
     TaskOrder findByTaskId(int id_task);
 
-    List<TaskOrder> getAllOneUser(int user_id);
+    List<TaskOrder> getAllToSend(int user_id);
 
-    List<TaskOrder> getAllTasksForMe(String user_role);
+    List<TaskOrder> getAllTasksForMe(String user_role,int user_id);
 }

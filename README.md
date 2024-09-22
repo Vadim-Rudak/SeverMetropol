@@ -7,7 +7,7 @@
 
 ## ABOUT
 
-Welcome to [Sever Metropol] – an advanced solution developed specifically for the needs of Sever Metropol’s manufacturing plants. Platform streamlines internal processes by offering comprehensive document management, real-time employee information tracking, and timely communication with staff.
+Platform streamlines internal processes by offering comprehensive document management, real-time employee information tracking, and timely communication with staff.
 
 ### Document Management System:
 Efficiently organize, store, and retrieve critical documents, ensuring smooth workflows and full compliance with industry regulations.
